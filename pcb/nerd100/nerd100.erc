@@ -1,0 +1,20 @@
+EAGLE Version 4.16 Copyright (c) 1988-2005 CadSoft
+
+Electrical Rule Check for D:/work/eagle/PROJ/nerd100/nerd100.sch at 2006/02/02 20:16:39 
+
+WARNING: Sheet 1/1: POWER Pin U1 AVCC connected to VCC
+WARNING: Sheet 1/1: POWER Pin U1 AGND connected to GND
+WARNING: Sheet 1/1: POWER Pin U1 VCC3.3 connected to VCC
+WARNING: Sheet 1/1: POWER Pin U1 VCC3.3 connected to VCC
+WARNING: Sheet 1/1: POWER Pin U1 VCC3.3 connected to VCC
+WARNING: Sheet 1/1: POWER Pin U1 VCC3.3 connected to VCC
+WARNING: Sheet 1/1: POWER Pin U1 GND/TEST connected to GND
+WARNING: Sheet 1/1: POWER Pin U1 GND/TEST1 connected to GND
+WARNING: Sheet 1/1: POWER Pin U1 GND/TEST2 connected to GND
+WARNING: Sheet 1/1: POWER Pin U1 GND/TEST3 connected to GND
+WARNING: Sheet 1/1: POWER Pin U1 GND/TEST4 connected to GND
+
+Board and schematic are consistent
+
+    0 errors
+   11 warnings

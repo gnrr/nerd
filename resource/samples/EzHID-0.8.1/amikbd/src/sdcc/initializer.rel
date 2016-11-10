@@ -1,0 +1,20 @@
+XH
+H 2 areas 5 global symbols
+M initializer
+S _string_langid Ref0000
+S _string_prod Ref0000
+S _string_mfg Ref0000
+S _string_if_keyboard Ref0000
+A _CODE size 0 flags 0
+A CSEG size 8 flags 0
+S _string_index Def0000
+T 00 00
+R 00 00 00 01
+T 00 00 00 00 00 00
+R 00 00 00 01 0B 02 00 00 8B 04 00 00
+T 00 02 00 00 00 00
+R 00 00 00 01 0B 02 00 02 8B 04 00 02
+T 00 04 00 00 00 00
+R 00 00 00 01 0B 02 00 01 8B 04 00 01
+T 00 06 00 00 00 00
+R 00 00 00 01 0B 02 00 03 8B 04 00 03

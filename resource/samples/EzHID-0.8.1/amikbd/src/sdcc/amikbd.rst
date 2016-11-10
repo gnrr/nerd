@@ -1,0 +1,1724 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : FreeWare ANSI-C Compiler
+                              3 ; Version 2.5.0 #1020 (May  8 2005)
+                              4 ; This file generated Mon Aug 22 21:21:56 2005
+                              5 ;--------------------------------------------------------
+                              6 	.module amikbd
+                              7 	.optsdcc -mmcs51 --model-small
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _main
+                             13 	.globl __sdcc_external_startup
+                             14 	.globl _core_apply_reset_values
+                             15 	.globl _SMOD1
+                             16 	.globl _ET2
+                             17 	.globl _TF2
+                             18 	.globl _TR2
+                             19 	.globl _TI_1
+                             20 	.globl _RI_1
+                             21 	.globl _TI_0
+                             22 	.globl _RI_0
+                             23 	.globl _ES1
+                             24 	.globl _ES0
+                             25 	.globl _EUSB
+                             26 	.globl _CY
+                             27 	.globl _AC
+                             28 	.globl _F0
+                             29 	.globl _RS1
+                             30 	.globl _RS0
+                             31 	.globl _OV
+                             32 	.globl _F1
+                             33 	.globl _P
+                             34 	.globl _PS
+                             35 	.globl _PT1
+                             36 	.globl _PX1
+                             37 	.globl _PT0
+                             38 	.globl _PX0
+                             39 	.globl _RD
+                             40 	.globl _WR
+                             41 	.globl _T1
+                             42 	.globl _T0
+                             43 	.globl _INT1
+                             44 	.globl _INT0
+                             45 	.globl _TXD
+                             46 	.globl _RXD
+                             47 	.globl _P3_7
+                             48 	.globl _P3_6
+                             49 	.globl _P3_5
+                             50 	.globl _P3_4
+                             51 	.globl _P3_3
+                             52 	.globl _P3_2
+                             53 	.globl _P3_1
+                             54 	.globl _P3_0
+                             55 	.globl _EA
+                             56 	.globl _ES
+                             57 	.globl _ET1
+                             58 	.globl _EX1
+                             59 	.globl _ET0
+                             60 	.globl _EX0
+                             61 	.globl _P2_7
+                             62 	.globl _P2_6
+                             63 	.globl _P2_5
+                             64 	.globl _P2_4
+                             65 	.globl _P2_3
+                             66 	.globl _P2_2
+                             67 	.globl _P2_1
+                             68 	.globl _P2_0
+                             69 	.globl _SM0
+                             70 	.globl _SM1
+                             71 	.globl _SM2
+                             72 	.globl _REN
+                             73 	.globl _TB8
+                             74 	.globl _RB8
+                             75 	.globl _TI
+                             76 	.globl _RI
+                             77 	.globl _P1_7
+                             78 	.globl _P1_6
+                             79 	.globl _P1_5
+                             80 	.globl _P1_4
+                             81 	.globl _P1_3
+                             82 	.globl _P1_2
+                             83 	.globl _P1_1
+                             84 	.globl _P1_0
+                             85 	.globl _TF1
+                             86 	.globl _TR1
+                             87 	.globl _TF0
+                             88 	.globl _TR0
+                             89 	.globl _IE1
+                             90 	.globl _IT1
+                             91 	.globl _IE0
+                             92 	.globl _IT0
+                             93 	.globl _P0_7
+                             94 	.globl _P0_6
+                             95 	.globl _P0_5
+                             96 	.globl _P0_4
+                             97 	.globl _P0_3
+                             98 	.globl _P0_2
+                             99 	.globl _P0_1
+                            100 	.globl _P0_0
+                            101 	.globl _DPH1
+                            102 	.globl _DPL1
+                            103 	.globl _DPH0
+                            104 	.globl _DPL0
+                            105 	.globl _EICON
+                            106 	.globl _TH2
+                            107 	.globl _TL2
+                            108 	.globl _RCAP2H
+                            109 	.globl _RCAP2L
+                            110 	.globl _T2CON
+                            111 	.globl _CKCON
+                            112 	.globl _SBUF1
+                            113 	.globl _SBUF0
+                            114 	.globl _SCON1
+                            115 	.globl _SCON0
+                            116 	.globl _EIE
+                            117 	.globl _MPAGE
+                            118 	.globl _EXIF
+                            119 	.globl _DPS
+                            120 	.globl _B
+                            121 	.globl _ACC
+                            122 	.globl _PSW
+                            123 	.globl _IP
+                            124 	.globl _P3
+                            125 	.globl _IE
+                            126 	.globl _P2
+                            127 	.globl _SBUF
+                            128 	.globl _SCON
+                            129 	.globl _P1
+                            130 	.globl _TH1
+                            131 	.globl _TH0
+                            132 	.globl _TL1
+                            133 	.globl _TL0
+                            134 	.globl _TMOD
+                            135 	.globl _TCON
+                            136 	.globl _PCON
+                            137 	.globl _DPH
+                            138 	.globl _DPL
+                            139 	.globl _SP
+                            140 	.globl _P0
+                            141 	.globl _AUTODATA
+                            142 	.globl _AUTOPTRL
+                            143 	.globl _AUTOPTRH
+                            144 	.globl _FASTXFR
+                            145 	.globl _OUT07VAL
+                            146 	.globl _IN07VAL
+                            147 	.globl _I2DAT
+                            148 	.globl _I2CS
+                            149 	.globl _SETUPDAT
+                            150 	.globl _SUDPTRL
+                            151 	.globl _SUDPTRH
+                            152 	.globl _TOGCTL
+                            153 	.globl _USBCS
+                            154 	.globl _USBBAV
+                            155 	.globl _USBPAIR
+                            156 	.globl _USBIEN
+                            157 	.globl _USBIRQ
+                            158 	.globl _OUT07IEN
+                            159 	.globl _IN07IEN
+                            160 	.globl _OUT07IRQ
+                            161 	.globl _IN07IRQ
+                            162 	.globl _ISOCTL
+                            163 	.globl _PORTCCFG
+                            164 	.globl _PORTBCFG
+                            165 	.globl _PORTACFG
+                            166 	.globl _PINSC
+                            167 	.globl _OUTC
+                            168 	.globl _OEC
+                            169 	.globl _PINSB
+                            170 	.globl _OUTB
+                            171 	.globl _OEB
+                            172 	.globl _PINSA
+                            173 	.globl _OUTA
+                            174 	.globl _OEA
+                            175 	.globl _OUT4BC
+                            176 	.globl _IN4BC
+                            177 	.globl _OUT4CS
+                            178 	.globl _IN4CS
+                            179 	.globl _OUT4BUF
+                            180 	.globl _IN4BUF
+                            181 	.globl _OUT3BC
+                            182 	.globl _OUT3CS
+                            183 	.globl _IN3BC
+                            184 	.globl _IN3CS
+                            185 	.globl _OUT3BUF
+                            186 	.globl _IN3BUF
+                            187 	.globl _OUT2BUF
+                            188 	.globl _OUT2CS
+                            189 	.globl _OUT2BC
+                            190 	.globl _IN2CS
+                            191 	.globl _IN2BC
+                            192 	.globl _IN2BUF
+                            193 	.globl _OUT1BC
+                            194 	.globl _OUT1CS
+                            195 	.globl _OUT1BUF
+                            196 	.globl _IN1BC
+                            197 	.globl _IN1BUF
+                            198 	.globl _IN1CS
+                            199 	.globl _OUT0BC
+                            200 	.globl _OUT0BUF
+                            201 	.globl _IN0BC
+                            202 	.globl _IN0BUF
+                            203 	.globl _EP0CS
+                            204 	.globl _kbd_idle_mode
+                            205 	.globl _kbd_new_keys
+                            206 	.globl _kbd_idle_counter
+                            207 	.globl _kbd_idle_duration
+                            208 	.globl _key_buffer
+                            209 ;--------------------------------------------------------
+                            210 ; special function registers
+                            211 ;--------------------------------------------------------
+                            212 	.area RSEG    (DATA)
+                    0080    213 _P0	=	0x0080
+                    0081    214 _SP	=	0x0081
+                    0082    215 _DPL	=	0x0082
+                    0083    216 _DPH	=	0x0083
+                    0087    217 _PCON	=	0x0087
+                    0088    218 _TCON	=	0x0088
+                    0089    219 _TMOD	=	0x0089
+                    008A    220 _TL0	=	0x008a
+                    008B    221 _TL1	=	0x008b
+                    008C    222 _TH0	=	0x008c
+                    008D    223 _TH1	=	0x008d
+                    0090    224 _P1	=	0x0090
+                    0098    225 _SCON	=	0x0098
+                    0099    226 _SBUF	=	0x0099
+                    00A0    227 _P2	=	0x00a0
+                    00A8    228 _IE	=	0x00a8
+                    00B0    229 _P3	=	0x00b0
+                    00B8    230 _IP	=	0x00b8
+                    00D0    231 _PSW	=	0x00d0
+                    00E0    232 _ACC	=	0x00e0
+                    00F0    233 _B	=	0x00f0
+                    0086    234 _DPS	=	0x0086
+                    0091    235 _EXIF	=	0x0091
+                    0092    236 _MPAGE	=	0x0092
+                    00E8    237 _EIE	=	0x00e8
+                    0098    238 _SCON0	=	0x0098
+                    00C0    239 _SCON1	=	0x00c0
+                    0099    240 _SBUF0	=	0x0099
+                    00C1    241 _SBUF1	=	0x00c1
+                    008E    242 _CKCON	=	0x008e
+                    00C8    243 _T2CON	=	0x00c8
+                    00CA    244 _RCAP2L	=	0x00ca
+                    00CB    245 _RCAP2H	=	0x00cb
+                    00CC    246 _TL2	=	0x00cc
+                    00CD    247 _TH2	=	0x00cd
+                    00D8    248 _EICON	=	0x00d8
+                    0082    249 _DPL0	=	0x0082
+                    0083    250 _DPH0	=	0x0083
+                    0084    251 _DPL1	=	0x0084
+                    0085    252 _DPH1	=	0x0085
+                            253 ;--------------------------------------------------------
+                            254 ; special function bits 
+                            255 ;--------------------------------------------------------
+                            256 	.area RSEG    (DATA)
+                    0080    257 _P0_0	=	0x0080
+                    0081    258 _P0_1	=	0x0081
+                    0082    259 _P0_2	=	0x0082
+                    0083    260 _P0_3	=	0x0083
+                    0084    261 _P0_4	=	0x0084
+                    0085    262 _P0_5	=	0x0085
+                    0086    263 _P0_6	=	0x0086
+                    0087    264 _P0_7	=	0x0087
+                    0088    265 _IT0	=	0x0088
+                    0089    266 _IE0	=	0x0089
+                    008A    267 _IT1	=	0x008a
+                    008B    268 _IE1	=	0x008b
+                    008C    269 _TR0	=	0x008c
+                    008D    270 _TF0	=	0x008d
+                    008E    271 _TR1	=	0x008e
+                    008F    272 _TF1	=	0x008f
+                    0090    273 _P1_0	=	0x0090
+                    0091    274 _P1_1	=	0x0091
+                    0092    275 _P1_2	=	0x0092
+                    0093    276 _P1_3	=	0x0093
+                    0094    277 _P1_4	=	0x0094
+                    0095    278 _P1_5	=	0x0095
+                    0096    279 _P1_6	=	0x0096
+                    0097    280 _P1_7	=	0x0097
+                    0098    281 _RI	=	0x0098
+                    0099    282 _TI	=	0x0099
+                    009A    283 _RB8	=	0x009a
+                    009B    284 _TB8	=	0x009b
+                    009C    285 _REN	=	0x009c
+                    009D    286 _SM2	=	0x009d
+                    009E    287 _SM1	=	0x009e
+                    009F    288 _SM0	=	0x009f
+                    00A0    289 _P2_0	=	0x00a0
+                    00A1    290 _P2_1	=	0x00a1
+                    00A2    291 _P2_2	=	0x00a2
+                    00A3    292 _P2_3	=	0x00a3
+                    00A4    293 _P2_4	=	0x00a4
+                    00A5    294 _P2_5	=	0x00a5
+                    00A6    295 _P2_6	=	0x00a6
+                    00A7    296 _P2_7	=	0x00a7
+                    00A8    297 _EX0	=	0x00a8
+                    00A9    298 _ET0	=	0x00a9
+                    00AA    299 _EX1	=	0x00aa
+                    00AB    300 _ET1	=	0x00ab
+                    00AC    301 _ES	=	0x00ac
+                    00AF    302 _EA	=	0x00af
+                    00B0    303 _P3_0	=	0x00b0
+                    00B1    304 _P3_1	=	0x00b1
+                    00B2    305 _P3_2	=	0x00b2
+                    00B3    306 _P3_3	=	0x00b3
+                    00B4    307 _P3_4	=	0x00b4
+                    00B5    308 _P3_5	=	0x00b5
+                    00B6    309 _P3_6	=	0x00b6
+                    00B7    310 _P3_7	=	0x00b7
+                    00B0    311 _RXD	=	0x00b0
+                    00B1    312 _TXD	=	0x00b1
+                    00B2    313 _INT0	=	0x00b2
+                    00B3    314 _INT1	=	0x00b3
+                    00B4    315 _T0	=	0x00b4
+                    00B5    316 _T1	=	0x00b5
+                    00B6    317 _WR	=	0x00b6
+                    00B7    318 _RD	=	0x00b7
+                    00B8    319 _PX0	=	0x00b8
+                    00B9    320 _PT0	=	0x00b9
+                    00BA    321 _PX1	=	0x00ba
+                    00BB    322 _PT1	=	0x00bb
+                    00BC    323 _PS	=	0x00bc
+                    00D0    324 _P	=	0x00d0
+                    00D1    325 _F1	=	0x00d1
+                    00D2    326 _OV	=	0x00d2
+                    00D3    327 _RS0	=	0x00d3
+                    00D4    328 _RS1	=	0x00d4
+                    00D5    329 _F0	=	0x00d5
+                    00D6    330 _AC	=	0x00d6
+                    00D7    331 _CY	=	0x00d7
+                    00E8    332 _EUSB	=	0x00e8
+                    00AC    333 _ES0	=	0x00ac
+                    00AE    334 _ES1	=	0x00ae
+                    0098    335 _RI_0	=	0x0098
+                    0099    336 _TI_0	=	0x0099
+                    00C0    337 _RI_1	=	0x00c0
+                    00C1    338 _TI_1	=	0x00c1
+                    00CA    339 _TR2	=	0x00ca
+                    00CF    340 _TF2	=	0x00cf
+                    00AD    341 _ET2	=	0x00ad
+                    00DF    342 _SMOD1	=	0x00df
+                            343 ;--------------------------------------------------------
+                            344 ; overlayable register banks 
+                            345 ;--------------------------------------------------------
+                            346 	.area REG_BANK_0	(REL,OVR,DATA)
+   0000                     347 	.ds 8
+                            348 	.area REG_BANK_1	(REL,OVR,DATA)
+   0008                     349 	.ds 8
+                            350 	.area REG_BANK_2	(REL,OVR,DATA)
+   0010                     351 	.ds 8
+                            352 	.area REG_BANK_3	(REL,OVR,DATA)
+   0018                     353 	.ds 8
+                            354 ;--------------------------------------------------------
+                            355 ; internal ram data
+                            356 ;--------------------------------------------------------
+                            357 	.area DSEG    (DATA)
+   0021                     358 _key_buffer::
+   0021                     359 	.ds 8
+   0029                     360 _kbd_idle_duration::
+   0029                     361 	.ds 1
+   002A                     362 _kbd_idle_counter::
+   002A                     363 	.ds 1
+                            364 ;--------------------------------------------------------
+                            365 ; overlayable items in internal ram 
+                            366 ;--------------------------------------------------------
+                            367 	.area	OSEG    (OVR,DATA)
+                            368 	.area	OSEG    (OVR,DATA)
+                            369 	.area	OSEG    (OVR,DATA)
+                            370 ;--------------------------------------------------------
+                            371 ; Stack segment in internal ram 
+                            372 ;--------------------------------------------------------
+                            373 	.area	SSEG	(DATA)
+   002D                     374 __start__stack:
+   002D                     375 	.ds	1
+                            376 
+                            377 ;--------------------------------------------------------
+                            378 ; indirectly addressable internal ram data
+                            379 ;--------------------------------------------------------
+                            380 	.area ISEG    (DATA)
+                            381 ;--------------------------------------------------------
+                            382 ; bit data
+                            383 ;--------------------------------------------------------
+                            384 	.area BSEG    (BIT)
+   0000                     385 _kbd_new_keys::
+   0000                     386 	.ds 1
+   0001                     387 _kbd_idle_mode::
+   0001                     388 	.ds 1
+   0002                     389 _caps_operated:
+   0002                     390 	.ds 1
+   0003                     391 _caps_send_release:
+   0003                     392 	.ds 1
+   0004                     393 _amikbd_comm_parse_keycode_1_1::
+   0004                     394 	.ds 1
+   0005                     395 _timer2_isr_kbd_send_report_1_1::
+   0005                     396 	.ds 1
+                            397 ;--------------------------------------------------------
+                            398 ; paged external ram data
+                            399 ;--------------------------------------------------------
+                            400 	.area PSEG    (PAG,XDATA)
+                            401 ;--------------------------------------------------------
+                            402 ; external ram data
+                            403 ;--------------------------------------------------------
+                            404 	.area XSEG    (XDATA)
+                    7FB4    405 _EP0CS	=	0x7fb4
+                    7F00    406 _IN0BUF	=	0x7f00
+                    7FB5    407 _IN0BC	=	0x7fb5
+                    7EC0    408 _OUT0BUF	=	0x7ec0
+                    7FC5    409 _OUT0BC	=	0x7fc5
+                    7FB6    410 _IN1CS	=	0x7fb6
+                    7E80    411 _IN1BUF	=	0x7e80
+                    7FB7    412 _IN1BC	=	0x7fb7
+                    7E40    413 _OUT1BUF	=	0x7e40
+                    7FC6    414 _OUT1CS	=	0x7fc6
+                    7FC7    415 _OUT1BC	=	0x7fc7
+                    7E00    416 _IN2BUF	=	0x7e00
+                    7FB9    417 _IN2BC	=	0x7fb9
+                    7FB8    418 _IN2CS	=	0x7fb8
+                    7FC9    419 _OUT2BC	=	0x7fc9
+                    7FC8    420 _OUT2CS	=	0x7fc8
+                    7DC0    421 _OUT2BUF	=	0x7dc0
+                    7D80    422 _IN3BUF	=	0x7d80
+                    7D40    423 _OUT3BUF	=	0x7d40
+                    7FBA    424 _IN3CS	=	0x7fba
+                    7FBB    425 _IN3BC	=	0x7fbb
+                    7FCA    426 _OUT3CS	=	0x7fca
+                    7FCB    427 _OUT3BC	=	0x7fcb
+                    7D00    428 _IN4BUF	=	0x7d00
+                    7CC0    429 _OUT4BUF	=	0x7cc0
+                    7FBC    430 _IN4CS	=	0x7fbc
+                    7FCC    431 _OUT4CS	=	0x7fcc
+                    7FBD    432 _IN4BC	=	0x7fbd
+                    7FCD    433 _OUT4BC	=	0x7fcd
+                    7F9C    434 _OEA	=	0x7f9c
+                    7F96    435 _OUTA	=	0x7f96
+                    7F99    436 _PINSA	=	0x7f99
+                    7F9D    437 _OEB	=	0x7f9d
+                    7F97    438 _OUTB	=	0x7f97
+                    7F9A    439 _PINSB	=	0x7f9a
+                    7F9E    440 _OEC	=	0x7f9e
+                    7F98    441 _OUTC	=	0x7f98
+                    7F9B    442 _PINSC	=	0x7f9b
+                    7F93    443 _PORTACFG	=	0x7f93
+                    7F94    444 _PORTBCFG	=	0x7f94
+                    7F95    445 _PORTCCFG	=	0x7f95
+                    7FA1    446 _ISOCTL	=	0x7fa1
+                    7FA9    447 _IN07IRQ	=	0x7fa9
+                    7FAA    448 _OUT07IRQ	=	0x7faa
+                    7FAC    449 _IN07IEN	=	0x7fac
+                    7FAD    450 _OUT07IEN	=	0x7fad
+                    7FAB    451 _USBIRQ	=	0x7fab
+                    7FAE    452 _USBIEN	=	0x7fae
+                    7FDD    453 _USBPAIR	=	0x7fdd
+                    7FAF    454 _USBBAV	=	0x7faf
+                    7FD6    455 _USBCS	=	0x7fd6
+                    7FD7    456 _TOGCTL	=	0x7fd7
+                    7FD4    457 _SUDPTRH	=	0x7fd4
+                    7FD5    458 _SUDPTRL	=	0x7fd5
+                    7FE8    459 _SETUPDAT	=	0x7fe8
+                    7FA5    460 _I2CS	=	0x7fa5
+                    7FA6    461 _I2DAT	=	0x7fa6
+                    7FDE    462 _IN07VAL	=	0x7fde
+                    7FDF    463 _OUT07VAL	=	0x7fdf
+                    7FE2    464 _FASTXFR	=	0x7fe2
+                    7FE3    465 _AUTOPTRH	=	0x7fe3
+                    7FE4    466 _AUTOPTRL	=	0x7fe4
+                    7FE5    467 _AUTODATA	=	0x7fe5
+                            468 ;--------------------------------------------------------
+                            469 ; external initialized ram data
+                            470 ;--------------------------------------------------------
+                            471 	.area XISEG   (XDATA)
+                            472 	.area CSEG    (CODE)
+                            473 	.area GSINIT0 (CODE)
+                            474 	.area GSINIT1 (CODE)
+                            475 	.area GSINIT2 (CODE)
+                            476 	.area GSINIT3 (CODE)
+                            477 	.area GSINIT4 (CODE)
+                            478 	.area GSINIT5 (CODE)
+                            479 ;--------------------------------------------------------
+                            480 ; interrupt vector 
+                            481 ;--------------------------------------------------------
+                            482 	.area CSEG    (CODE)
+   0000                     483 __interrupt_vect:
+   0000 02 0A A1            484 	ljmp	__sdcc_gsinit_startup
+   0003 32                  485 	reti
+   0004                     486 	.ds	7
+   000B 32                  487 	reti
+   000C                     488 	.ds	7
+   0013 32                  489 	reti
+   0014                     490 	.ds	7
+   001B 32                  491 	reti
+   001C                     492 	.ds	7
+   0023 32                  493 	reti
+   0024                     494 	.ds	7
+   002B 02 01 AD            495 	ljmp	_timer2_isr
+   002E                     496 	.ds	5
+   0033 02 08 FE            497 	ljmp	_resume_isr
+   0036                     498 	.ds	5
+   003B 32                  499 	reti
+   003C                     500 	.ds	7
+   0043 02 04 BD            501 	ljmp	_usb_isr
+                            502 ;--------------------------------------------------------
+                            503 ; global & static initialisations
+                            504 ;--------------------------------------------------------
+                            505 	.area CSEG    (CODE)
+                            506 	.area GSINIT  (CODE)
+                            507 	.area GSFINAL (CODE)
+                            508 	.area GSINIT  (CODE)
+                            509 	.globl __sdcc_gsinit_startup
+                            510 	.globl __sdcc_program_startup
+                            511 	.globl __start__stack
+                            512 	.globl __mcs51_genXINIT
+                            513 	.globl __mcs51_genXRAMCLEAR
+                            514 	.globl __mcs51_genRAMCLEAR
+                            515 	.area GSFINAL (CODE)
+   0B00 02 00 46            516 	ljmp	__sdcc_program_startup
+                            517 ;--------------------------------------------------------
+                            518 ; Home
+                            519 ;--------------------------------------------------------
+                            520 	.area HOME    (CODE)
+                            521 	.area CSEG    (CODE)
+                            522 ;--------------------------------------------------------
+                            523 ; code
+                            524 ;--------------------------------------------------------
+                            525 	.area CSEG    (CODE)
+   0046                     526 __sdcc_program_startup:
+   0046 12 02 B5            527 	lcall	_main
+                            528 ;	return from main will lock up
+   0049 80 FE               529 	sjmp .
+                            530 ;------------------------------------------------------------
+                            531 ;Allocation info for local variables in function 'amikbd_comm'
+                            532 ;------------------------------------------------------------
+                            533 ;keycode                   Allocated to registers r2 
+                            534 ;mod_map                   Allocated to registers r3 
+                            535 ;receive_cnt               Allocated to registers r3 
+                            536 ;i                         Allocated to registers r3 
+                            537 ;------------------------------------------------------------
+                            538 ;amikbd.c:49: static void amikbd_comm(void)
+                            539 ;	-----------------------------------------
+                            540 ;	 function amikbd_comm
+                            541 ;	-----------------------------------------
+   004B                     542 _amikbd_comm:
+                    0002    543 	ar2 = 0x02
+                    0003    544 	ar3 = 0x03
+                    0004    545 	ar4 = 0x04
+                    0005    546 	ar5 = 0x05
+                    0006    547 	ar6 = 0x06
+                    0007    548 	ar7 = 0x07
+                    0000    549 	ar0 = 0x00
+                    0001    550 	ar1 = 0x01
+                            551 ;amikbd.c:57: while (TRUE) {
+   004B                     552 00161$:
+                            553 ;amikbd.c:59: keycode   = 0;
+                            554 ;     genAssign
+   004B 7A 00               555 	mov	r2,#0x00
+                            556 ;amikbd.c:64: for (receive_cnt = 7; receive_cnt > 0; receive_cnt--) {
+                            557 ;     genAssign
+   004D 7B 07               558 	mov	r3,#0x07
+   004F                     559 00163$:
+                            560 ;     genCmpGt
+                            561 ;     genCmp
+                            562 ;     genIfxJump
+                            563 ;	Peephole 108	removed ljmp by inverse jump logic
+                            564 ;	Peephole 132.b	optimized genCmpGt by inverse logic (acc differs)
+   004F EB                  565 	mov	a,r3
+   0050 24 FF               566 	add	a,#0xff - 0x00
+   0052 50 21               567 	jnc	00109$
+   0054                     568 00204$:
+                            569 ;amikbd.c:66: keycode <<= 1;
+                            570 ;     genLeftShift
+                            571 ;     genLeftShiftLiteral
+                            572 ;     genlshOne
+                            573 ;	Peephole 254	optimized left shift
+   0054 EA                  574 	mov	a,r2
+   0055 2A                  575 	add	a,r2
+   0056 FA                  576 	mov	r2,a
+                            577 ;amikbd.c:69: while (KBD_CLOCK_PORT & KBD_CLOCK_PIN) ;
+   0057                     578 00101$:
+                            579 ;     genAssign
+   0057 90 7F 9B            580 	mov	dptr,#_PINSC
+   005A E0                  581 	movx	a,@dptr
+                            582 ;     genAnd
+                            583 ;	Peephole 105	removed redundant mov
+   005B FC                  584 	mov	r4,a
+                            585 ;     genIfxJump
+                            586 ;	Peephole 112.a	removed ljmp by inverse jump logic
+   005C 20 E4 F8            587 	jb	acc.4,00101$
+   005F                     588 00205$:
+                            589 ;amikbd.c:72: if (!(KBD_DATA_PORT & KBD_DATA_PIN))
+                            590 ;     genAssign
+   005F 90 7F 9B            591 	mov	dptr,#_PINSC
+   0062 E0                  592 	movx	a,@dptr
+                            593 ;     genAnd
+                            594 ;	Peephole 105	removed redundant mov
+   0063 FC                  595 	mov	r4,a
+                            596 ;     genIfxJump
+                            597 ;	Peephole 112.a	removed ljmp by inverse jump logic
+   0064 20 E5 03            598 	jb	acc.5,00106$
+   0067                     599 00206$:
+                            600 ;amikbd.c:73: keycode |= 1;
+                            601 ;     genOr
+   0067 43 02 01            602 	orl	ar2,#0x01
+                            603 ;amikbd.c:76: while (!(KBD_CLOCK_PORT & KBD_CLOCK_PIN)) ;
+   006A                     604 00106$:
+                            605 ;     genAssign
+   006A 90 7F 9B            606 	mov	dptr,#_PINSC
+   006D E0                  607 	movx	a,@dptr
+                            608 ;     genAnd
+                            609 ;	Peephole 105	removed redundant mov
+   006E FC                  610 	mov	r4,a
+                            611 ;     genIfxJump
+                            612 ;	Peephole 111	removed ljmp by inverse jump logic
+   006F 30 E4 F8            613 	jnb	acc.4,00106$
+   0072                     614 00207$:
+                            615 ;amikbd.c:64: for (receive_cnt = 7; receive_cnt > 0; receive_cnt--) {
+                            616 ;     genMinus
+                            617 ;     genMinusDec
+   0072 1B                  618 	dec	r3
+                            619 ;amikbd.c:82: while (KBD_CLOCK_PORT & KBD_CLOCK_PIN) ;
+                            620 ;	Peephole 112.b	changed ljmp to sjmp
+   0073 80 DA               621 	sjmp	00163$
+   0075                     622 00109$:
+                            623 ;     genAssign
+   0075 90 7F 9B            624 	mov	dptr,#_PINSC
+   0078 E0                  625 	movx	a,@dptr
+                            626 ;     genAnd
+                            627 ;	Peephole 105	removed redundant mov
+   0079 FB                  628 	mov	r3,a
+                            629 ;     genIfxJump
+                            630 ;	Peephole 112.a	removed ljmp by inverse jump logic
+   007A 20 E4 F8            631 	jb	acc.4,00109$
+   007D                     632 00208$:
+                            633 ;amikbd.c:84: if (KBD_DATA_PORT & KBD_DATA_PIN)
+                            634 ;     genAssign
+   007D 90 7F 9B            635 	mov	dptr,#_PINSC
+   0080 E0                  636 	movx	a,@dptr
+                            637 ;     genAnd
+                            638 ;	Peephole 105	removed redundant mov
+   0081 FB                  639 	mov	r3,a
+                            640 ;     genIfxJump
+                            641 ;	Peephole 111	removed ljmp by inverse jump logic
+   0082 30 E5 03            642 	jnb	acc.5,00114$
+   0085                     643 00209$:
+                            644 ;amikbd.c:85: keycode |= AMIKBD_PRESSED;
+                            645 ;     genOr
+   0085 43 02 80            646 	orl	ar2,#0x80
+                            647 ;amikbd.c:86: while (!(KBD_CLOCK_PORT & KBD_CLOCK_PIN)) ;
+   0088                     648 00114$:
+                            649 ;     genAssign
+   0088 90 7F 9B            650 	mov	dptr,#_PINSC
+   008B E0                  651 	movx	a,@dptr
+                            652 ;     genAnd
+                            653 ;	Peephole 105	removed redundant mov
+   008C FB                  654 	mov	r3,a
+                            655 ;     genIfxJump
+                            656 ;	Peephole 111	removed ljmp by inverse jump logic
+   008D 30 E4 F8            657 	jnb	acc.4,00114$
+   0090                     658 00210$:
+                            659 ;amikbd.c:92: TL0 = TIMER0_LOW;
+                            660 ;     genAssign
+   0090 75 8A 56            661 	mov	_TL0,#0x56
+                            662 ;amikbd.c:93: TH0 = TIMER0_HIGH;
+                            663 ;     genAssign
+   0093 75 8C FF            664 	mov	_TH0,#0xFF
+                            665 ;amikbd.c:94: KBD_DATA_OE |= KBD_DATA_PIN;   /* pull data line low */
+                            666 ;     genAssign
+                            667 ;     genOr
+                            668 ;	Peephole 248.a	optimized or to xdata
+   0096 90 7F 9E            669 	mov	dptr,#_OEC
+   0099 E0                  670 	movx	a,@dptr
+   009A FB                  671 	mov	r3,a
+   009B 44 20               672 	orl	a,#0x20
+   009D F0                  673 	movx	@dptr,a
+                            674 ;amikbd.c:95: TR0 = TRUE;
+                            675 ;     genAssign
+   009E D2 8C               676 	setb	_TR0
+                            677 ;amikbd.c:101: switch (keycode)
+                            678 ;     genCmpEq
+   00A0 BA 78 03            679 	cjne	r2,#0x78,00211$
+   00A3 02 01 9A            680 	ljmp	00157$
+   00A6                     681 00211$:
+                            682 ;     genCmpEq
+   00A6 BA F9 03            683 	cjne	r2,#0xF9,00212$
+   00A9 02 01 9A            684 	ljmp	00157$
+   00AC                     685 00212$:
+                            686 ;     genCmpEq
+   00AC BA FA 03            687 	cjne	r2,#0xFA,00213$
+   00AF 02 01 9A            688 	ljmp	00157$
+   00B2                     689 00213$:
+                            690 ;     genCmpEq
+   00B2 BA FB 03            691 	cjne	r2,#0xFB,00214$
+   00B5 02 01 9A            692 	ljmp	00157$
+   00B8                     693 00214$:
+                            694 ;     genCmpEq
+   00B8 BA FC 03            695 	cjne	r2,#0xFC,00215$
+   00BB 02 01 9A            696 	ljmp	00157$
+   00BE                     697 00215$:
+                            698 ;     genCmpEq
+   00BE BA FD 03            699 	cjne	r2,#0xFD,00216$
+   00C1 02 01 9A            700 	ljmp	00157$
+   00C4                     701 00216$:
+                            702 ;     genCmpEq
+   00C4 BA FE 03            703 	cjne	r2,#0xFE,00217$
+   00C7 02 01 9A            704 	ljmp	00157$
+   00CA                     705 00217$:
+                            706 ;     genCmpEq
+   00CA BA FF 03            707 	cjne	r2,#0xFF,00218$
+   00CD 02 01 9A            708 	ljmp	00157$
+   00D0                     709 00218$:
+                            710 ;amikbd.c:114: parse_keycode = FALSE;
+                            711 ;     genAssign
+   00D0 C2 04               712 	clr	_amikbd_comm_parse_keycode_1_1
+                            713 ;amikbd.c:115: switch (keycode & AMIKBD_KEY) {
+                            714 ;     genAnd
+   00D2 74 7F               715 	mov	a,#0x7F
+   00D4 5A                  716 	anl	a,r2
+   00D5 FB                  717 	mov	r3,a
+                            718 ;     genCmpLt
+                            719 ;     genCmp
+   00D6 BB 60 00            720 	cjne	r3,#0x60,00219$
+   00D9                     721 00219$:
+                            722 ;     genIfxJump
+                            723 ;	Peephole 112.b	changed ljmp to sjmp
+                            724 ;	Peephole 160	removed sjmp by inverse jump logic
+   00D9 40 4F               725 	jc	00134$
+   00DB                     726 00220$:
+                            727 ;     genCmpGt
+                            728 ;     genCmp
+                            729 ;     genIfxJump
+                            730 ;	Peephole 132.b	optimized genCmpGt by inverse logic (acc differs)
+   00DB EB                  731 	mov	a,r3
+   00DC 24 98               732 	add	a,#0xff - 0x67
+                            733 ;	Peephole 112.b	changed ljmp to sjmp
+                            734 ;	Peephole 160	removed sjmp by inverse jump logic
+   00DE 40 4A               735 	jc	00134$
+   00E0                     736 00221$:
+                            737 ;     genMinus
+   00E0 EB                  738 	mov	a,r3
+   00E1 24 A0               739 	add	a,#0xa0
+                            740 ;     genJumpTab
+                            741 ;	Peephole 105	removed redundant mov
+   00E3 FB                  742 	mov	r3,a
+   00E4 25 E0               743 	add	a,acc
+   00E6 2B                  744 	add	a,r3
+   00E7 90 00 EB            745 	mov	dptr,#00222$
+   00EA 73                  746 	jmp	@a+dptr
+   00EB                     747 00222$:
+   00EB 02 01 12            748 	ljmp	00128$
+   00EE 02 01 1E            749 	ljmp	00131$
+   00F1 02 01 03            750 	ljmp	00126$
+   00F4 02 01 0E            751 	ljmp	00127$
+   00F7 02 01 16            752 	ljmp	00129$
+   00FA 02 01 22            753 	ljmp	00132$
+   00FD 02 01 1A            754 	ljmp	00130$
+   0100 02 01 26            755 	ljmp	00133$
+                            756 ;amikbd.c:117: case AMIKBD_CAPSLOCK:
+   0103                     757 00126$:
+                            758 ;amikbd.c:122: keycode      |= AMIKBD_PRESSED;
+                            759 ;     genOr
+   0103 43 02 80            760 	orl	ar2,#0x80
+                            761 ;amikbd.c:123: caps_operated = TRUE;
+                            762 ;     genAssign
+   0106 D2 02               763 	setb	_caps_operated
+                            764 ;amikbd.c:124: mod_map       = 0;
+                            765 ;     genAssign
+   0108 7B 00               766 	mov	r3,#0x00
+                            767 ;amikbd.c:125: parse_keycode = TRUE;
+                            768 ;     genAssign
+   010A D2 04               769 	setb	_amikbd_comm_parse_keycode_1_1
+                            770 ;amikbd.c:126: break;
+                            771 ;amikbd.c:129: case 0x63:
+                            772 ;	Peephole 112.b	changed ljmp to sjmp
+   010C 80 20               773 	sjmp	00135$
+   010E                     774 00127$:
+                            775 ;amikbd.c:130: mod_map = 0x01;
+                            776 ;     genAssign
+   010E 7B 01               777 	mov	r3,#0x01
+                            778 ;amikbd.c:131: break;
+                            779 ;amikbd.c:134: case 0x60:
+                            780 ;	Peephole 112.b	changed ljmp to sjmp
+   0110 80 1C               781 	sjmp	00135$
+   0112                     782 00128$:
+                            783 ;amikbd.c:135: mod_map = 0x02;
+                            784 ;     genAssign
+   0112 7B 02               785 	mov	r3,#0x02
+                            786 ;amikbd.c:136: break;
+                            787 ;amikbd.c:139: case 0x64:
+                            788 ;	Peephole 112.b	changed ljmp to sjmp
+   0114 80 18               789 	sjmp	00135$
+   0116                     790 00129$:
+                            791 ;amikbd.c:140: mod_map = 0x04;
+                            792 ;     genAssign
+   0116 7B 04               793 	mov	r3,#0x04
+                            794 ;amikbd.c:141: break;
+                            795 ;amikbd.c:144: case 0x66:
+                            796 ;	Peephole 112.b	changed ljmp to sjmp
+   0118 80 14               797 	sjmp	00135$
+   011A                     798 00130$:
+                            799 ;amikbd.c:145: mod_map = 0x08;
+                            800 ;     genAssign
+   011A 7B 08               801 	mov	r3,#0x08
+                            802 ;amikbd.c:146: break;
+                            803 ;amikbd.c:149: case 0x61:
+                            804 ;	Peephole 112.b	changed ljmp to sjmp
+   011C 80 10               805 	sjmp	00135$
+   011E                     806 00131$:
+                            807 ;amikbd.c:150: mod_map = 0x20;
+                            808 ;     genAssign
+   011E 7B 20               809 	mov	r3,#0x20
+                            810 ;amikbd.c:151: break;
+                            811 ;amikbd.c:154: case 0x65:
+                            812 ;	Peephole 112.b	changed ljmp to sjmp
+   0120 80 0C               813 	sjmp	00135$
+   0122                     814 00132$:
+                            815 ;amikbd.c:155: mod_map = 0x40;
+                            816 ;     genAssign
+   0122 7B 40               817 	mov	r3,#0x40
+                            818 ;amikbd.c:156: break;
+                            819 ;amikbd.c:159: case 0x67:
+                            820 ;	Peephole 112.b	changed ljmp to sjmp
+   0124 80 08               821 	sjmp	00135$
+   0126                     822 00133$:
+                            823 ;amikbd.c:160: mod_map = 0x80;
+                            824 ;     genAssign
+   0126 7B 80               825 	mov	r3,#0x80
+                            826 ;amikbd.c:161: break;
+                            827 ;amikbd.c:163: default:
+                            828 ;	Peephole 112.b	changed ljmp to sjmp
+   0128 80 04               829 	sjmp	00135$
+   012A                     830 00134$:
+                            831 ;amikbd.c:164: mod_map       = 0;
+                            832 ;     genAssign
+   012A 7B 00               833 	mov	r3,#0x00
+                            834 ;amikbd.c:165: parse_keycode = TRUE;
+                            835 ;     genAssign
+   012C D2 04               836 	setb	_amikbd_comm_parse_keycode_1_1
+                            837 ;amikbd.c:168: }
+   012E                     838 00135$:
+                            839 ;amikbd.c:171: if (mod_map) {
+                            840 ;     genIfx
+   012E EB                  841 	mov	a,r3
+                            842 ;     genIfxJump
+                            843 ;	Peephole 110	removed ljmp by inverse jump logic
+   012F 60 16               844 	jz	00140$
+   0131                     845 00223$:
+                            846 ;amikbd.c:173: if (keycode & AMIKBD_PRESSED) {
+                            847 ;     genAnd
+   0131 EA                  848 	mov	a,r2
+                            849 ;     genIfxJump
+                            850 ;	Peephole 111	removed ljmp by inverse jump logic
+   0132 30 E7 09            851 	jnb	acc.7,00137$
+   0135                     852 00224$:
+                            853 ;amikbd.c:175: key_buffer[0] |= mod_map;
+                            854 ;     genAssign
+                            855 ;     genOr
+   0135 EB                  856 	mov	a,r3
+   0136 45 21               857 	orl	a,_key_buffer
+                            858 ;     genPointerSet
+                            859 ;     genNearPointerSet
+                            860 ;     genDataPointerSet
+   0138 F5 21               861 	mov	_key_buffer,a
+                            862 ;amikbd.c:176: kbd_new_keys   = TRUE;
+                            863 ;     genAssign
+   013A D2 00               864 	setb	_kbd_new_keys
+                            865 ;	Peephole 112.b	changed ljmp to sjmp
+   013C 80 09               866 	sjmp	00140$
+   013E                     867 00137$:
+                            868 ;amikbd.c:179: key_buffer[0] &= ~mod_map;
+                            869 ;     genAssign
+                            870 ;	genCpl
+   013E EB                  871 	mov	a,r3
+   013F F4                  872 	cpl	a
+                            873 ;     genAnd
+                            874 ;	Peephole 105	removed redundant mov
+   0140 FB                  875 	mov	r3,a
+   0141 55 21               876 	anl	a,_key_buffer
+                            877 ;     genPointerSet
+                            878 ;     genNearPointerSet
+                            879 ;     genDataPointerSet
+   0143 F5 21               880 	mov	_key_buffer,a
+                            881 ;amikbd.c:180: kbd_new_keys   = TRUE;
+                            882 ;     genAssign
+   0145 D2 00               883 	setb	_kbd_new_keys
+   0147                     884 00140$:
+                            885 ;amikbd.c:185: if (parse_keycode) {
+                            886 ;     genIfx
+                            887 ;     genIfxJump
+                            888 ;	Peephole 111	removed ljmp by inverse jump logic
+   0147 30 04 50            889 	jnb	_amikbd_comm_parse_keycode_1_1,00157$
+   014A                     890 00225$:
+                            891 ;amikbd.c:187: if (keycode & AMIKBD_PRESSED) {
+                            892 ;     genAnd
+   014A EA                  893 	mov	a,r2
+                            894 ;     genIfxJump
+                            895 ;	Peephole 111	removed ljmp by inverse jump logic
+   014B 30 E7 2A            896 	jnb	acc.7,00152$
+   014E                     897 00226$:
+                            898 ;amikbd.c:189: keycode &= AMIKBD_KEY;
+                            899 ;     genAnd
+   014E 53 02 7F            900 	anl	ar2,#0x7F
+                            901 ;amikbd.c:190: keycode = keycode_map[keycode];
+                            902 ;     genPlus
+                            903 ;	Peephole 236.g	used r2 instead of ar2
+   0151 EA                  904 	mov	a,r2
+                            905 ;	Peephole 181	changed mov to clr
+                            906 ;     genPointerGet
+                            907 ;     genCodePointerGet
+                            908 ;	Peephole 181	changed mov to clr
+                            909 ;	Peephole 186.d	optimized movc sequence
+   0152 90 02 F5            910 	mov	dptr,#_keycode_map
+   0155 93                  911 	movc	a,@a+dptr
+   0156 FA                  912 	mov	r2,a
+                            913 ;amikbd.c:191: i = 2;
+                            914 ;     genAssign
+   0157 7B 02               915 	mov	r3,#0x02
+                            916 ;amikbd.c:192: while (i < 8) {
+                            917 ;     genAssign
+   0159 7C 02               918 	mov	r4,#0x02
+   015B                     919 00143$:
+                            920 ;     genCmpLt
+                            921 ;     genCmp
+   015B BC 08 00            922 	cjne	r4,#0x08,00227$
+   015E                     923 00227$:
+                            924 ;     genIfxJump
+                            925 ;	Peephole 108	removed ljmp by inverse jump logic
+   015E 50 14               926 	jnc	00145$
+   0160                     927 00228$:
+                            928 ;amikbd.c:193: if (!key_buffer[i]) {
+                            929 ;     genPlus
+                            930 ;	Peephole 236.g	used r4 instead of ar4
+   0160 EC                  931 	mov	a,r4
+   0161 24 21               932 	add	a,#_key_buffer
+   0163 F8                  933 	mov	r0,a
+                            934 ;     genPointerGet
+                            935 ;     genNearPointerGet
+   0164 E6                  936 	mov	a,@r0
+                            937 ;     genIfxJump
+                            938 ;	Peephole 109	removed ljmp by inverse jump logic
+   0165 70 08               939 	jnz	00142$
+   0167                     940 00229$:
+                            941 ;amikbd.c:194: key_buffer[i] = keycode;
+                            942 ;     genPlus
+                            943 ;	Peephole 236.g	used r3 instead of ar3
+   0167 EB                  944 	mov	a,r3
+   0168 24 21               945 	add	a,#_key_buffer
+                            946 ;     genPointerSet
+                            947 ;     genNearPointerSet
+                            948 ;	Peephole 239	used a instead of acc
+   016A F8                  949 	mov	r0,a
+   016B A6 02               950 	mov	@r0,ar2
+                            951 ;amikbd.c:195: break;
+                            952 ;	Peephole 112.b	changed ljmp to sjmp
+   016D 80 05               953 	sjmp	00145$
+   016F                     954 00142$:
+                            955 ;amikbd.c:197: i++;
+                            956 ;     genPlus
+                            957 ;     genPlusIncr
+   016F 0C                  958 	inc	r4
+                            959 ;     genAssign
+   0170 8C 03               960 	mov	ar3,r4
+                            961 ;	Peephole 112.b	changed ljmp to sjmp
+   0172 80 E7               962 	sjmp	00143$
+   0174                     963 00145$:
+                            964 ;amikbd.c:199: kbd_new_keys = TRUE;
+                            965 ;     genAssign
+   0174 D2 00               966 	setb	_kbd_new_keys
+                            967 ;	Peephole 112.b	changed ljmp to sjmp
+   0176 80 22               968 	sjmp	00157$
+   0178                     969 00152$:
+                            970 ;amikbd.c:203: keycode = keycode_map[keycode];
+                            971 ;     genPlus
+                            972 ;	Peephole 236.g	used r2 instead of ar2
+   0178 EA                  973 	mov	a,r2
+                            974 ;	Peephole 181	changed mov to clr
+                            975 ;     genPointerGet
+                            976 ;     genCodePointerGet
+                            977 ;	Peephole 181	changed mov to clr
+                            978 ;	Peephole 186.d	optimized movc sequence
+   0179 90 02 F5            979 	mov	dptr,#_keycode_map
+   017C 93                  980 	movc	a,@a+dptr
+   017D FA                  981 	mov	r2,a
+                            982 ;amikbd.c:205: while (i > 1) {
+                            983 ;     genAssign
+   017E 7B 07               984 	mov	r3,#0x07
+   0180                     985 00148$:
+                            986 ;     genCmpGt
+                            987 ;     genCmp
+                            988 ;     genIfxJump
+                            989 ;	Peephole 108	removed ljmp by inverse jump logic
+                            990 ;	Peephole 132.b	optimized genCmpGt by inverse logic (acc differs)
+   0180 EB                  991 	mov	a,r3
+   0181 24 FE               992 	add	a,#0xff - 0x01
+   0183 50 13               993 	jnc	00150$
+   0185                     994 00230$:
+                            995 ;amikbd.c:206: if (key_buffer[i] == keycode)
+                            996 ;     genPlus
+                            997 ;	Peephole 236.g	used r3 instead of ar3
+   0185 EB                  998 	mov	a,r3
+   0186 24 21               999 	add	a,#_key_buffer
+   0188 F8                 1000 	mov	r0,a
+                           1001 ;     genPointerGet
+                           1002 ;     genNearPointerGet
+   0189 86 04              1003 	mov	ar4,@r0
+                           1004 ;     genCmpEq
+   018B EC                 1005 	mov	a,r4
+                           1006 ;	Peephole 112.b	changed ljmp to sjmp
+                           1007 ;	Peephole 199	optimized misc jump sequence
+   018C B5 02 06           1008 	cjne	a,ar2,00147$
+                           1009 ;00231$:
+                           1010 ;	Peephole 200	removed redundant sjmp
+   018F                    1011 00232$:
+                           1012 ;amikbd.c:207: key_buffer[i] = 0;
+                           1013 ;     genPlus
+                           1014 ;	Peephole 236.g	used r3 instead of ar3
+   018F EB                 1015 	mov	a,r3
+   0190 24 21              1016 	add	a,#_key_buffer
+                           1017 ;     genPointerSet
+                           1018 ;     genNearPointerSet
+                           1019 ;	Peephole 239	used a instead of acc
+   0192 F8                 1020 	mov	r0,a
+   0193 76 00              1021 	mov	@r0,#0x00
+   0195                    1022 00147$:
+                           1023 ;amikbd.c:208: i--;
+                           1024 ;     genMinus
+                           1025 ;     genMinusDec
+   0195 1B                 1026 	dec	r3
+                           1027 ;	Peephole 112.b	changed ljmp to sjmp
+   0196 80 E8              1028 	sjmp	00148$
+   0198                    1029 00150$:
+                           1030 ;amikbd.c:210: kbd_new_keys = TRUE;
+                           1031 ;     genAssign
+   0198 D2 00              1032 	setb	_kbd_new_keys
+                           1033 ;amikbd.c:222: while (!TF0) ;
+   019A                    1034 00157$:
+                           1035 ;     genIfx
+                           1036 ;     genIfxJump
+                           1037 ;	Peephole 111	removed ljmp by inverse jump logic
+   019A 30 8D FD           1038 	jnb	_TF0,00157$
+   019D                    1039 00233$:
+                           1040 ;amikbd.c:223: KBD_DATA_OE &= ~KBD_DATA_PIN;  /* release data line */
+                           1041 ;     genAssign
+                           1042 ;     genAnd
+                           1043 ;	Peephole 248.b	optimized and to xdata
+   019D 90 7F 9E           1044 	mov	dptr,#_OEC
+   01A0 E0                 1045 	movx	a,@dptr
+   01A1 FA                 1046 	mov	r2,a
+   01A2 54 DF              1047 	anl	a,#0xDF
+   01A4 F0                 1048 	movx	@dptr,a
+                           1049 ;amikbd.c:224: TR0 = FALSE;
+                           1050 ;     genAssign
+   01A5 C2 8C              1051 	clr	_TR0
+                           1052 ;amikbd.c:225: TF0 = FALSE;
+                           1053 ;     genAssign
+   01A7 C2 8D              1054 	clr	_TF0
+   01A9 02 00 4B           1055 	ljmp	00161$
+   01AC                    1056 00167$:
+   01AC 22                 1057 	ret
+                           1058 ;------------------------------------------------------------
+                           1059 ;Allocation info for local variables in function 'timer2_isr'
+                           1060 ;------------------------------------------------------------
+                           1061 ;i                         Allocated to registers r2 
+                           1062 ;------------------------------------------------------------
+                           1063 ;amikbd.c:240: static void timer2_isr() interrupt 5 using 3 critical
+                           1064 ;	-----------------------------------------
+                           1065 ;	 function timer2_isr
+                           1066 ;	-----------------------------------------
+   01AD                    1067 _timer2_isr:
+                    001A   1068 	ar2 = 0x1a
+                    001B   1069 	ar3 = 0x1b
+                    001C   1070 	ar4 = 0x1c
+                    001D   1071 	ar5 = 0x1d
+                    001E   1072 	ar6 = 0x1e
+                    001F   1073 	ar7 = 0x1f
+                    0018   1074 	ar0 = 0x18
+                    0019   1075 	ar1 = 0x19
+   01AD C0 E0              1076 	push	acc
+   01AF C0 82              1077 	push	dpl
+   01B1 C0 83              1078 	push	dph
+   01B3 C0 D0              1079 	push	psw
+   01B5 75 D0 18           1080 	mov	psw,#0x18
+   01B8 D3                 1081 	setb	c
+   01B9 10 AF 01           1082 	jbc	ea,00140$
+   01BC C3                 1083 	clr	c
+   01BD                    1084 00140$:
+   01BD C0 D0              1085 	push	psw
+                           1086 ;amikbd.c:245: if (TF2) {
+                           1087 ;     genIfx
+                           1088 ;     genIfxJump
+                           1089 ;amikbd.c:246: TF2 = 0;
+                           1090 ;     genAssign
+                           1091 ;	Peephole 250.b	using atomic test and clear
+   01BF 10 CF 03           1092 	jbc	_TF2,00141$
+   01C2 02 02 36           1093 	ljmp	00125$
+   01C5                    1094 00141$:
+                           1095 ;amikbd.c:251: kbd_send_report = FALSE;
+                           1096 ;     genAssign
+   01C5 C2 05              1097 	clr	_timer2_isr_kbd_send_report_1_1
+                           1098 ;amikbd.c:254: if (caps_send_release) {
+                           1099 ;     genIfx
+                           1100 ;     genIfxJump
+                           1101 ;	Peephole 111	removed ljmp by inverse jump logic
+                           1102 ;amikbd.c:255: caps_send_release = FALSE;
+                           1103 ;     genAssign
+                           1104 ;	Peephole 250.a	using atomic test and clear
+   01C7 10 03 02           1105 	jbc	_caps_send_release,00142$
+   01CA 80 1D              1106 	sjmp	00107$
+   01CC                    1107 00142$:
+                           1108 ;amikbd.c:258: while (i-- > 2)
+                           1109 ;     genAssign
+   01CC 7A 08              1110 	mov	r2,#0x08
+   01CE                    1111 00103$:
+                           1112 ;     genAssign
+   01CE 8A 1B              1113 	mov	ar3,r2
+                           1114 ;     genMinus
+                           1115 ;     genMinusDec
+   01D0 1A                 1116 	dec	r2
+                           1117 ;     genCmpGt
+                           1118 ;     genCmp
+                           1119 ;     genIfxJump
+                           1120 ;	Peephole 108	removed ljmp by inverse jump logic
+                           1121 ;	Peephole 132.b	optimized genCmpGt by inverse logic (acc differs)
+   01D1 EB                 1122 	mov	a,r3
+   01D2 24 FD              1123 	add	a,#0xff - 0x02
+   01D4 50 11              1124 	jnc	00105$
+   01D6                    1125 00143$:
+                           1126 ;amikbd.c:259: if (key_buffer[i] == USB_CAPSLOCK)
+                           1127 ;     genPlus
+                           1128 ;	Peephole 236.g	used r2 instead of ar2
+   01D6 EA                 1129 	mov	a,r2
+   01D7 24 21              1130 	add	a,#_key_buffer
+   01D9 F8                 1131 	mov	r0,a
+                           1132 ;     genPointerGet
+                           1133 ;     genNearPointerGet
+   01DA 86 1B              1134 	mov	ar3,@r0
+                           1135 ;     genCmpEq
+                           1136 ;	Peephole 112.b	changed ljmp to sjmp
+                           1137 ;	Peephole 199	optimized misc jump sequence
+   01DC BB 39 EF           1138 	cjne	r3,#0x39,00103$
+                           1139 ;00144$:
+                           1140 ;	Peephole 200	removed redundant sjmp
+   01DF                    1141 00145$:
+                           1142 ;amikbd.c:260: key_buffer[i] = 0;
+                           1143 ;     genPlus
+                           1144 ;	Peephole 236.g	used r2 instead of ar2
+   01DF EA                 1145 	mov	a,r2
+   01E0 24 21              1146 	add	a,#_key_buffer
+                           1147 ;     genPointerSet
+                           1148 ;     genNearPointerSet
+                           1149 ;	Peephole 239	used a instead of acc
+   01E2 F8                 1150 	mov	r0,a
+   01E3 76 00              1151 	mov	@r0,#0x00
+                           1152 ;	Peephole 112.b	changed ljmp to sjmp
+   01E5 80 E7              1153 	sjmp	00103$
+   01E7                    1154 00105$:
+                           1155 ;amikbd.c:261: kbd_send_report   = TRUE;
+                           1156 ;     genAssign
+   01E7 D2 05              1157 	setb	_timer2_isr_kbd_send_report_1_1
+   01E9                    1158 00107$:
+                           1159 ;amikbd.c:265: if (!kbd_idle_mode) {
+                           1160 ;     genIfx
+                           1161 ;     genIfxJump
+                           1162 ;	Peephole 112.a	removed ljmp by inverse jump logic
+   01E9 20 01 0D           1163 	jb	_kbd_idle_mode,00111$
+   01EC                    1164 00146$:
+                           1165 ;amikbd.c:266: if (--kbd_idle_counter == 0) {
+                           1166 ;     genMinus
+                           1167 ;     genMinusDec
+   01EC 15 2A              1168 	dec	_kbd_idle_counter
+                           1169 ;     genCmpEq
+   01EE E5 2A              1170 	mov	a,_kbd_idle_counter
+                           1171 ;	Peephole 162	removed sjmp by inverse jump logic
+   01F0 60 02              1172 	jz	00148$
+   01F2                    1173 00147$:
+                           1174 ;	Peephole 112.b	changed ljmp to sjmp
+   01F2 80 05              1175 	sjmp	00111$
+   01F4                    1176 00148$:
+                           1177 ;amikbd.c:267: kbd_send_report  = TRUE;
+                           1178 ;     genAssign
+   01F4 D2 05              1179 	setb	_timer2_isr_kbd_send_report_1_1
+                           1180 ;amikbd.c:269: kbd_idle_counter = kbd_idle_duration;
+                           1181 ;     genAssign
+   01F6 85 29 2A           1182 	mov	_kbd_idle_counter,_kbd_idle_duration
+   01F9                    1183 00111$:
+                           1184 ;amikbd.c:274: if (kbd_new_keys) {
+                           1185 ;     genIfx
+                           1186 ;     genIfxJump
+                           1187 ;	Peephole 111	removed ljmp by inverse jump logic
+   01F9 30 00 0E           1188 	jnb	_kbd_new_keys,00115$
+   01FC                    1189 00149$:
+                           1190 ;amikbd.c:275: kbd_send_report     = TRUE;
+                           1191 ;     genAssign
+   01FC D2 05              1192 	setb	_timer2_isr_kbd_send_report_1_1
+                           1193 ;amikbd.c:276: kbd_new_keys        = FALSE;
+                           1194 ;     genAssign
+   01FE C2 00              1195 	clr	_kbd_new_keys
+                           1196 ;amikbd.c:278: kbd_idle_counter    = kbd_idle_duration;
+                           1197 ;     genAssign
+   0200 85 29 2A           1198 	mov	_kbd_idle_counter,_kbd_idle_duration
+                           1199 ;amikbd.c:281: if (caps_operated) {
+                           1200 ;     genIfx
+                           1201 ;     genIfxJump
+                           1202 ;	Peephole 111	removed ljmp by inverse jump logic
+                           1203 ;amikbd.c:282: caps_operated     = FALSE;
+                           1204 ;     genAssign
+                           1205 ;	Peephole 250.a	using atomic test and clear
+   0203 10 02 02           1206 	jbc	_caps_operated,00150$
+   0206 80 02              1207 	sjmp	00115$
+   0208                    1208 00150$:
+                           1209 ;amikbd.c:283: caps_send_release = TRUE;
+                           1210 ;     genAssign
+   0208 D2 03              1211 	setb	_caps_send_release
+   020A                    1212 00115$:
+                           1213 ;amikbd.c:288: if (kbd_send_report) {
+                           1214 ;     genIfx
+                           1215 ;     genIfxJump
+                           1216 ;	Peephole 111	removed ljmp by inverse jump logic
+   020A 30 05 29           1217 	jnb	_timer2_isr_kbd_send_report_1_1,00125$
+   020D                    1218 00151$:
+                           1219 ;amikbd.c:289: if (!in1_busy) {
+                           1220 ;     genIfx
+                           1221 ;     genIfxJump
+                           1222 ;	Peephole 112.a	removed ljmp by inverse jump logic
+   020D 20 07 26           1223 	jb	_in1_busy,00125$
+   0210                    1224 00152$:
+                           1225 ;amikbd.c:291: while (i-- > 0)
+                           1226 ;     genAssign
+   0210 7A 08              1227 	mov	r2,#0x08
+   0212                    1228 00116$:
+                           1229 ;     genAssign
+   0212 8A 1B              1230 	mov	ar3,r2
+                           1231 ;     genMinus
+                           1232 ;     genMinusDec
+   0214 1A                 1233 	dec	r2
+                           1234 ;     genCmpGt
+                           1235 ;     genCmp
+                           1236 ;     genIfxJump
+                           1237 ;	Peephole 108	removed ljmp by inverse jump logic
+                           1238 ;	Peephole 132.b	optimized genCmpGt by inverse logic (acc differs)
+   0215 EB                 1239 	mov	a,r3
+   0216 24 FF              1240 	add	a,#0xff - 0x00
+   0218 50 14              1241 	jnc	00118$
+   021A                    1242 00153$:
+                           1243 ;amikbd.c:292: in1buf(i) = key_buffer[i];
+                           1244 ;     genPlus
+                           1245 ;	Peephole 236.g	used r2 instead of ar2
+   021A EA                 1246 	mov	a,r2
+   021B 24 80              1247 	add	a,#_IN1BUF
+   021D F5 82              1248 	mov	dpl,a
+                           1249 ;	Peephole 181	changed mov to clr
+   021F E4                 1250 	clr	a
+   0220 34 7E              1251 	addc	a,#(_IN1BUF >> 8)
+   0222 F5 83              1252 	mov	dph,a
+                           1253 ;     genPlus
+                           1254 ;	Peephole 236.g	used r2 instead of ar2
+   0224 EA                 1255 	mov	a,r2
+   0225 24 21              1256 	add	a,#_key_buffer
+   0227 F8                 1257 	mov	r0,a
+                           1258 ;     genPointerGet
+                           1259 ;     genNearPointerGet
+   0228 86 1B              1260 	mov	ar3,@r0
+                           1261 ;     genPointerSet
+                           1262 ;     genFarPointerSet
+   022A EB                 1263 	mov	a,r3
+   022B F0                 1264 	movx	@dptr,a
+                           1265 ;	Peephole 112.b	changed ljmp to sjmp
+   022C 80 E4              1266 	sjmp	00116$
+   022E                    1267 00118$:
+                           1268 ;amikbd.c:295: in1_busy = TRUE;
+                           1269 ;     genAssign
+   022E D2 07              1270 	setb	_in1_busy
+                           1271 ;amikbd.c:296: IN1BC    = 8;
+                           1272 ;     genAssign
+   0230 90 7F B7           1273 	mov	dptr,#_IN1BC
+   0233 74 08              1274 	mov	a,#0x08
+   0235 F0                 1275 	movx	@dptr,a
+   0236                    1276 00125$:
+   0236 D0 D0              1277 	pop	psw
+   0238 92 AF              1278 	mov	ea,c
+   023A D0 D0              1279 	pop	psw
+   023C D0 83              1280 	pop	dph
+   023E D0 82              1281 	pop	dpl
+   0240 D0 E0              1282 	pop	acc
+   0242 32                 1283 	reti
+                           1284 ;	eliminated unneeded push/pop b
+                           1285 ;------------------------------------------------------------
+                           1286 ;Allocation info for local variables in function 'core_apply_reset_values'
+                           1287 ;------------------------------------------------------------
+                           1288 ;------------------------------------------------------------
+                           1289 ;amikbd.c:310: void core_apply_reset_values() using 1
+                           1290 ;	-----------------------------------------
+                           1291 ;	 function core_apply_reset_values
+                           1292 ;	-----------------------------------------
+   0243                    1293 _core_apply_reset_values:
+                    000A   1294 	ar2 = 0x0a
+                    000B   1295 	ar3 = 0x0b
+                    000C   1296 	ar4 = 0x0c
+                    000D   1297 	ar5 = 0x0d
+                    000E   1298 	ar6 = 0x0e
+                    000F   1299 	ar7 = 0x0f
+                    0008   1300 	ar0 = 0x08
+                    0009   1301 	ar1 = 0x09
+                           1302 ;amikbd.c:312: kbd_new_keys        = 0;
+                           1303 ;     genAssign
+   0243 C2 00              1304 	clr	_kbd_new_keys
+                           1305 ;amikbd.c:313: kbd_idle_mode       = FALSE;
+                           1306 ;     genAssign
+   0245 C2 01              1307 	clr	_kbd_idle_mode
+                           1308 ;amikbd.c:314: kbd_idle_duration   = 125;
+                           1309 ;     genAssign
+   0247 75 29 7D           1310 	mov	_kbd_idle_duration,#0x7D
+                           1311 ;amikbd.c:316: caps_operated       = FALSE;
+                           1312 ;     genAssign
+   024A C2 02              1313 	clr	_caps_operated
+                           1314 ;amikbd.c:317: caps_send_release   = FALSE;
+                           1315 ;     genAssign
+   024C C2 03              1316 	clr	_caps_send_release
+   024E                    1317 00101$:
+   024E 22                 1318 	ret
+                           1319 ;------------------------------------------------------------
+                           1320 ;Allocation info for local variables in function 'setup_timer2_int'
+                           1321 ;------------------------------------------------------------
+                           1322 ;------------------------------------------------------------
+                           1323 ;amikbd.c:326: static void setup_timer2_int()
+                           1324 ;	-----------------------------------------
+                           1325 ;	 function setup_timer2_int
+                           1326 ;	-----------------------------------------
+   024F                    1327 _setup_timer2_int:
+                    0002   1328 	ar2 = 0x02
+                    0003   1329 	ar3 = 0x03
+                    0004   1330 	ar4 = 0x04
+                    0005   1331 	ar5 = 0x05
+                    0006   1332 	ar6 = 0x06
+                    0007   1333 	ar7 = 0x07
+                    0000   1334 	ar0 = 0x00
+                    0001   1335 	ar1 = 0x01
+                           1336 ;amikbd.c:329: kbd_idle_counter = kbd_idle_duration;
+                           1337 ;     genAssign
+   024F 85 29 2A           1338 	mov	_kbd_idle_counter,_kbd_idle_duration
+                           1339 ;amikbd.c:336: T2CON  = 0x00;
+                           1340 ;     genAssign
+   0252 75 C8 00           1341 	mov	_T2CON,#0x00
+                           1342 ;amikbd.c:337: RCAP2H = TH2 = 0xc1;
+                           1343 ;     genAssign
+   0255 75 CD C1           1344 	mov	_TH2,#0xC1
+                           1345 ;     genAssign
+   0258 75 CB C1           1346 	mov	_RCAP2H,#0xC1
+                           1347 ;amikbd.c:338: RCAP2L = TL2 = 0x80;
+                           1348 ;     genAssign
+   025B 75 CC 80           1349 	mov	_TL2,#0x80
+                           1350 ;     genAssign
+   025E 75 CA 80           1351 	mov	_RCAP2L,#0x80
+                           1352 ;amikbd.c:341: ET2    = 1;
+                           1353 ;     genAssign
+   0261 D2 AD              1354 	setb	_ET2
+                           1355 ;amikbd.c:343: TF2    = 0;
+                           1356 ;     genAssign
+   0263 C2 CF              1357 	clr	_TF2
+                           1358 ;amikbd.c:345: TR2    = 1;
+                           1359 ;     genAssign
+   0265 D2 CA              1360 	setb	_TR2
+   0267                    1361 00101$:
+   0267 22                 1362 	ret
+                           1363 ;------------------------------------------------------------
+                           1364 ;Allocation info for local variables in function 'setup_keyboard'
+                           1365 ;------------------------------------------------------------
+                           1366 ;i                         Allocated to registers r2 
+                           1367 ;------------------------------------------------------------
+                           1368 ;amikbd.c:354: static void setup_keyboard(void)
+                           1369 ;	-----------------------------------------
+                           1370 ;	 function setup_keyboard
+                           1371 ;	-----------------------------------------
+   0268                    1372 _setup_keyboard:
+                           1373 ;amikbd.c:359: KBD_CLOCK_OE  &= ~KBD_CLOCK_PIN;
+                           1374 ;     genAssign
+                           1375 ;     genAnd
+                           1376 ;	Peephole 248.b	optimized and to xdata
+   0268 90 7F 9E           1377 	mov	dptr,#_OEC
+   026B E0                 1378 	movx	a,@dptr
+   026C FA                 1379 	mov	r2,a
+   026D 54 EF              1380 	anl	a,#0xEF
+   026F F0                 1381 	movx	@dptr,a
+                           1382 ;amikbd.c:360: KBD_DATA_OE   &= ~KBD_DATA_PIN;
+                           1383 ;     genAssign
+                           1384 ;     genAnd
+                           1385 ;	Peephole 248.b	optimized and to xdata
+   0270 90 7F 9E           1386 	mov	dptr,#_OEC
+   0273 E0                 1387 	movx	a,@dptr
+   0274 FA                 1388 	mov	r2,a
+   0275 54 DF              1389 	anl	a,#0xDF
+   0277 F0                 1390 	movx	@dptr,a
+                           1391 ;amikbd.c:363: KBD_DATA_OUT  &= ~KBD_DATA_PIN;
+                           1392 ;     genAssign
+                           1393 ;     genAnd
+                           1394 ;	Peephole 248.b	optimized and to xdata
+   0278 90 7F 98           1395 	mov	dptr,#_OUTC
+   027B E0                 1396 	movx	a,@dptr
+   027C FA                 1397 	mov	r2,a
+   027D 54 DF              1398 	anl	a,#0xDF
+   027F F0                 1399 	movx	@dptr,a
+                           1400 ;amikbd.c:369: do {
+                           1401 ;     genAssign
+   0280 7A 07              1402 	mov	r2,#0x07
+   0282                    1403 00101$:
+                           1404 ;amikbd.c:370: key_buffer[i] = 0;
+                           1405 ;     genPlus
+                           1406 ;	Peephole 236.g	used r2 instead of ar2
+   0282 EA                 1407 	mov	a,r2
+   0283 24 21              1408 	add	a,#_key_buffer
+                           1409 ;     genPointerSet
+                           1410 ;     genNearPointerSet
+                           1411 ;	Peephole 239	used a instead of acc
+   0285 F8                 1412 	mov	r0,a
+   0286 76 00              1413 	mov	@r0,#0x00
+                           1414 ;amikbd.c:371: } while (i-- > 0);
+                           1415 ;     genAssign
+   0288 8A 03              1416 	mov	ar3,r2
+                           1417 ;     genMinus
+                           1418 ;     genMinusDec
+   028A 1A                 1419 	dec	r2
+                           1420 ;     genCmpGt
+                           1421 ;     genCmp
+                           1422 ;     genIfxJump
+                           1423 ;	Peephole 132.b	optimized genCmpGt by inverse logic (acc differs)
+   028B EB                 1424 	mov	a,r3
+   028C 24 FF              1425 	add	a,#0xff - 0x00
+                           1426 ;	Peephole 112.b	changed ljmp to sjmp
+                           1427 ;	Peephole 160	removed sjmp by inverse jump logic
+   028E 40 F2              1428 	jc	00101$
+   0290                    1429 00107$:
+   0290                    1430 00104$:
+   0290 22                 1431 	ret
+                           1432 ;------------------------------------------------------------
+                           1433 ;Allocation info for local variables in function 'setup_timer0'
+                           1434 ;------------------------------------------------------------
+                           1435 ;------------------------------------------------------------
+                           1436 ;amikbd.c:383: static void setup_timer0(void)
+                           1437 ;	-----------------------------------------
+                           1438 ;	 function setup_timer0
+                           1439 ;	-----------------------------------------
+   0291                    1440 _setup_timer0:
+                           1441 ;amikbd.c:386: TR0   = FALSE;
+                           1442 ;     genAssign
+   0291 C2 8C              1443 	clr	_TR0
+                           1444 ;amikbd.c:388: TF0   = FALSE;
+                           1445 ;     genAssign
+   0293 C2 8D              1446 	clr	_TF0
+                           1447 ;amikbd.c:389: ET0   = FALSE;
+                           1448 ;     genAssign
+   0295 C2 A9              1449 	clr	_ET0
+                           1450 ;amikbd.c:395: TMOD  = 1;
+                           1451 ;     genAssign
+   0297 75 89 01           1452 	mov	_TMOD,#0x01
+   029A                    1453 00101$:
+   029A 22                 1454 	ret
+                           1455 ;------------------------------------------------------------
+                           1456 ;Allocation info for local variables in function '_sdcc_external_startup'
+                           1457 ;------------------------------------------------------------
+                           1458 ;i                         Allocated to registers r2 
+                           1459 ;------------------------------------------------------------
+                           1460 ;amikbd.c:407: Byte _sdcc_external_startup()
+                           1461 ;	-----------------------------------------
+                           1462 ;	 function _sdcc_external_startup
+                           1463 ;	-----------------------------------------
+   029B                    1464 __sdcc_external_startup:
+                           1465 ;amikbd.c:414: for (i = 2; i > 0; i--) ;
+                           1466 ;     genAssign
+   029B 7A 02              1467 	mov	r2,#0x02
+   029D                    1468 00101$:
+                           1469 ;     genCmpGt
+                           1470 ;     genCmp
+                           1471 ;     genIfxJump
+                           1472 ;	Peephole 108	removed ljmp by inverse jump logic
+                           1473 ;	Peephole 132.b	optimized genCmpGt by inverse logic (acc differs)
+   029D EA                 1474 	mov	a,r2
+   029E 24 FF              1475 	add	a,#0xff - 0x00
+   02A0 50 03              1476 	jnc	00104$
+   02A2                    1477 00109$:
+                           1478 ;     genMinus
+                           1479 ;     genMinusDec
+   02A2 1A                 1480 	dec	r2
+                           1481 ;	Peephole 112.b	changed ljmp to sjmp
+   02A3 80 F8              1482 	sjmp	00101$
+   02A5                    1483 00104$:
+                           1484 ;amikbd.c:417: USBCS &= ~0x04;               /* tristate the Disconnect pin */
+                           1485 ;     genAssign
+                           1486 ;     genAnd
+                           1487 ;	Peephole 248.b	optimized and to xdata
+                           1488 ;amikbd.c:418: USBCS |= 0x08;                /* disconnect USB core         */
+                           1489 ;     genAssign
+                           1490 ;     genOr
+                           1491 ;	Peephole 248.a	optimized or to xdata
+                           1492 ;	Peephole 248.g	optimized and/or to volatile xdata
+   02A5 90 7F D6           1493 	mov	dptr,#_USBCS
+   02A8 E0                 1494 	movx	a,@dptr
+   02A9 54 FB              1495 	anl	a,#0xFB
+   02AB F0                 1496 	movx	@dptr,a
+   02AC E0                 1497 	movx	a,@dptr
+   02AD FA                 1498 	mov	r2,a
+   02AE 44 08              1499 	orl	a,#0x08
+   02B0 F0                 1500 	movx	@dptr,a
+                           1501 ;amikbd.c:421: return(0);
+                           1502 ;     genRet
+   02B1 75 82 00           1503 	mov	dpl,#0x00
+   02B4                    1504 00105$:
+   02B4 22                 1505 	ret
+                           1506 ;------------------------------------------------------------
+                           1507 ;Allocation info for local variables in function 'main'
+                           1508 ;------------------------------------------------------------
+                           1509 ;loop                      Allocated to registers r2 r3 
+                           1510 ;------------------------------------------------------------
+                           1511 ;amikbd.c:432: void main()
+                           1512 ;	-----------------------------------------
+                           1513 ;	 function main
+                           1514 ;	-----------------------------------------
+   02B5                    1515 _main:
+                           1516 ;amikbd.c:438: while (loop-- > 0) ;
+                           1517 ;     genAssign
+   02B5 7A 00              1518 	mov	r2,#0x00
+   02B7 7B 40              1519 	mov	r3,#0x40
+   02B9                    1520 00101$:
+                           1521 ;     genAssign
+   02B9 8A 04              1522 	mov	ar4,r2
+   02BB 8B 05              1523 	mov	ar5,r3
+                           1524 ;     genMinus
+                           1525 ;     genMinusDec
+   02BD 1A                 1526 	dec	r2
+   02BE BA FF 01           1527 	cjne	r2,#0xff,00112$
+   02C1 1B                 1528 	dec	r3
+   02C2                    1529 00112$:
+                           1530 ;     genCmpGt
+                           1531 ;     genCmp
+   02C2 C3                 1532 	clr	c
+                           1533 ;	Peephole 181	changed mov to clr
+   02C3 E4                 1534 	clr	a
+   02C4 9C                 1535 	subb	a,r4
+                           1536 ;	Peephole 159	avoided xrl during execution
+   02C5 74 80              1537 	mov	a,#(0x00 ^ 0x80)
+   02C7 8D F0              1538 	mov	b,r5
+   02C9 63 F0 80           1539 	xrl	b,#0x80
+   02CC 95 F0              1540 	subb	a,b
+                           1541 ;     genIfxJump
+                           1542 ;	Peephole 112.b	changed ljmp to sjmp
+                           1543 ;	Peephole 160	removed sjmp by inverse jump logic
+   02CE 40 E9              1544 	jc	00101$
+   02D0                    1545 00113$:
+                           1546 ;amikbd.c:442: apply_reset_values();
+                           1547 ;     genCall
+   02D0 12 03 75           1548 	lcall	_apply_reset_values
+                           1549 ;amikbd.c:444: setup_usb_int();
+                           1550 ;     genCall
+   02D3 12 09 09           1551 	lcall	_setup_usb_int
+                           1552 ;amikbd.c:446: setup_keyboard();
+                           1553 ;     genCall
+   02D6 12 02 68           1554 	lcall	_setup_keyboard
+                           1555 ;amikbd.c:448: setup_timer2_int();
+                           1556 ;     genCall
+   02D9 12 02 4F           1557 	lcall	_setup_timer2_int
+                           1558 ;amikbd.c:450: setup_timer0();
+                           1559 ;     genCall
+   02DC 12 02 91           1560 	lcall	_setup_timer0
+                           1561 ;amikbd.c:453: USBCS |= 0x02;                /* activate RENUM                     */
+                           1562 ;     genAssign
+                           1563 ;     genOr
+                           1564 ;	Peephole 248.a	optimized or to xdata
+                           1565 ;amikbd.c:454: USBCS &= ~0x08;               /* deactivate DISCON                  */
+                           1566 ;     genAssign
+                           1567 ;     genAnd
+                           1568 ;	Peephole 248.b	optimized and to xdata
+                           1569 ;amikbd.c:455: USBCS |= 0x04;                /* release tristate on Disconnect pin */
+                           1570 ;     genAssign
+                           1571 ;     genOr
+                           1572 ;	Peephole 248.a	optimized or to xdata
+                           1573 ;	Peephole 248.d	optimized or/and/or to volatile xdata
+   02DF 90 7F D6           1574 	mov	dptr,#_USBCS
+   02E2 E0                 1575 	movx	a,@dptr
+   02E3 44 02              1576 	orl	a,#0x02
+   02E5 F0                 1577 	movx	@dptr,a
+   02E6 E0                 1578 	movx	a,@dptr
+   02E7 54 F7              1579 	anl	a,#0xF7
+   02E9 F0                 1580 	movx	@dptr,a
+   02EA E0                 1581 	movx	a,@dptr
+   02EB FA                 1582 	mov	r2,a
+   02EC 44 04              1583 	orl	a,#0x04
+   02EE F0                 1584 	movx	@dptr,a
+                           1585 ;amikbd.c:458: amikbd_comm();
+                           1586 ;     genCall
+   02EF 12 00 4B           1587 	lcall	_amikbd_comm
+                           1588 ;amikbd.c:460: while (TRUE) ;
+   02F2                    1589 00105$:
+                           1590 ;	Peephole 112.b	changed ljmp to sjmp
+   02F2 80 FE              1591 	sjmp	00105$
+   02F4                    1592 00107$:
+   02F4 22                 1593 	ret
+                           1594 	.area CSEG    (CODE)
+   02F5                    1595 _keycode_map:
+   02F5 35                 1596 	.db #0x35
+   02F6 1E                 1597 	.db #0x1E
+   02F7 1F                 1598 	.db #0x1F
+   02F8 20                 1599 	.db #0x20
+   02F9 21                 1600 	.db #0x21
+   02FA 22                 1601 	.db #0x22
+   02FB 23                 1602 	.db #0x23
+   02FC 24                 1603 	.db #0x24
+   02FD 25                 1604 	.db #0x25
+   02FE 26                 1605 	.db #0x26
+   02FF 27                 1606 	.db #0x27
+   0300 2D                 1607 	.db #0x2D
+   0301 2E                 1608 	.db #0x2E
+   0302 31                 1609 	.db #0x31
+   0303 00                 1610 	.db #0x00
+   0304 62                 1611 	.db #0x62
+   0305 14                 1612 	.db #0x14
+   0306 1A                 1613 	.db #0x1A
+   0307 08                 1614 	.db #0x08
+   0308 15                 1615 	.db #0x15
+   0309 17                 1616 	.db #0x17
+   030A 1C                 1617 	.db #0x1C
+   030B 18                 1618 	.db #0x18
+   030C 0C                 1619 	.db #0x0C
+   030D 12                 1620 	.db #0x12
+   030E 13                 1621 	.db #0x13
+   030F 2F                 1622 	.db #0x2F
+   0310 30                 1623 	.db #0x30
+   0311 00                 1624 	.db #0x00
+   0312 59                 1625 	.db #0x59
+   0313 5A                 1626 	.db #0x5A
+   0314 5B                 1627 	.db #0x5B
+   0315 04                 1628 	.db #0x04
+   0316 16                 1629 	.db #0x16
+   0317 07                 1630 	.db #0x07
+   0318 09                 1631 	.db #0x09
+   0319 0A                 1632 	.db #0x0A
+   031A 0B                 1633 	.db #0x0B
+   031B 0D                 1634 	.db #0x0D
+   031C 0E                 1635 	.db #0x0E
+   031D 0F                 1636 	.db #0x0F
+   031E 33                 1637 	.db #0x33
+   031F 34                 1638 	.db #0x34
+   0320 32                 1639 	.db #0x32
+   0321 00                 1640 	.db #0x00
+   0322 5C                 1641 	.db #0x5C
+   0323 5D                 1642 	.db #0x5D
+   0324 5E                 1643 	.db #0x5E
+   0325 00                 1644 	.db #0x00
+   0326 1D                 1645 	.db #0x1D
+   0327 1B                 1646 	.db #0x1B
+   0328 06                 1647 	.db #0x06
+   0329 19                 1648 	.db #0x19
+   032A 05                 1649 	.db #0x05
+   032B 11                 1650 	.db #0x11
+   032C 10                 1651 	.db #0x10
+   032D 36                 1652 	.db #0x36
+   032E 37                 1653 	.db #0x37
+   032F 38                 1654 	.db #0x38
+   0330 00                 1655 	.db #0x00
+   0331 63                 1656 	.db #0x63
+   0332 5F                 1657 	.db #0x5F
+   0333 60                 1658 	.db #0x60
+   0334 61                 1659 	.db #0x61
+   0335 2C                 1660 	.db #0x2C
+   0336 2A                 1661 	.db #0x2A
+   0337 2B                 1662 	.db #0x2B
+   0338 58                 1663 	.db #0x58
+   0339 28                 1664 	.db #0x28
+   033A 29                 1665 	.db #0x29
+   033B 4C                 1666 	.db #0x4C
+   033C 00                 1667 	.db #0x00
+   033D 00                 1668 	.db #0x00
+   033E 00                 1669 	.db #0x00
+   033F 56                 1670 	.db #0x56
+   0340 00                 1671 	.db #0x00
+   0341 52                 1672 	.db #0x52
+   0342 51                 1673 	.db #0x51
+   0343 4F                 1674 	.db #0x4F
+   0344 50                 1675 	.db #0x50
+   0345 3A                 1676 	.db #0x3A
+   0346 3B                 1677 	.db #0x3B
+   0347 3C                 1678 	.db #0x3C
+   0348 3D                 1679 	.db #0x3D
+   0349 3E                 1680 	.db #0x3E
+   034A 3F                 1681 	.db #0x3F
+   034B 40                 1682 	.db #0x40
+   034C 41                 1683 	.db #0x41
+   034D 42                 1684 	.db #0x42
+   034E 43                 1685 	.db #0x43
+   034F 2F                 1686 	.db #0x2F
+   0350 30                 1687 	.db #0x30
+   0351 54                 1688 	.db #0x54
+   0352 55                 1689 	.db #0x55
+   0353 57                 1690 	.db #0x57
+   0354 75                 1691 	.db #0x75
+   0355 00                 1692 	.db #0x00
+   0356 00                 1693 	.db #0x00
+   0357 39                 1694 	.db #0x39
+   0358 00                 1695 	.db #0x00
+   0359 00                 1696 	.db #0x00
+   035A 00                 1697 	.db #0x00
+   035B 00                 1698 	.db #0x00
+   035C 00                 1699 	.db #0x00
+   035D 00                 1700 	.db #0x00
+   035E 00                 1701 	.db #0x00
+   035F 00                 1702 	.db #0x00
+   0360 00                 1703 	.db #0x00
+   0361 00                 1704 	.db #0x00
+   0362 00                 1705 	.db #0x00
+   0363 00                 1706 	.db #0x00
+   0364 00                 1707 	.db #0x00
+   0365 00                 1708 	.db #0x00
+   0366 00                 1709 	.db #0x00
+   0367 00                 1710 	.db #0x00
+   0368 00                 1711 	.db #0x00
+   0369 00                 1712 	.db #0x00
+   036A 00                 1713 	.db #0x00
+   036B 00                 1714 	.db #0x00
+   036C 00                 1715 	.db #0x00
+   036D 00                 1716 	.db #0x00
+   036E 00                 1717 	.db #0x00
+   036F 00                 1718 	.db #0x00
+   0370 00                 1719 	.db #0x00
+   0371 00                 1720 	.db #0x00
+   0372 00                 1721 	.db #0x00
+   0373 00                 1722 	.db #0x00
+   0374 00                 1723 	.db #0x00
+                           1724 	.area XINIT   (CODE)

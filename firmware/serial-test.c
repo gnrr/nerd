@@ -1,0 +1,61 @@
+/*
+***************************************************************
+  Filename: serial-test.c
+  Last modified: Fri Jan 27 2006 22:27:04 LMT
+
+  Description: test routines of serial out from sci1
+  compiler: sdcc
+
+  $Id: serial-test.c 34 2006-06-05 14:03:14Z gnrr $
+***************************************************************
+*/
+#include "common.h"
+#include "serial-test.h"
+
+/*
+ * public functions declaration
+ */
+void InitSci1(void);
+void PutChar(char c) reentrant;
+
+/*
+ * initialize sci1
+ */
+void InitSci1(void)
+{
+	/* use PB2/RxD1, PB3/TxD1 */
+	PORTBCFG |= bmRXD | bmTXD; /* select alt function (RxD/TxD) */
+	OEB &= ~(bmRXD | bmTXD);   /* disable output about these pins */
+
+	/* timer1 init for sci1*/
+	CKCON |= 0x10;        /* T1M=1, clock source is CLK24/4 */
+	TMOD &= 0x0F;         /* clear bits of timer1(hi-nibble) */
+	TMOD |= 0x20;         /* select mode2 */
+	TL1 = 0xff;           /* initial counter */
+	TH1 = CNT_BPS;
+
+	SMOD1 = 1;            /* baud rate doubler enabled */
+	TR1 = 1;              /* run timer1 */
+
+	SCON1 = 0x50;         /* serial mode 1, receiver enabled */
+	TI_1 = 1;             /* set TI for first send */
+}
+/*
+ * send one byte
+ */
+void PutChar(char c) reentrant
+{
+	volatile uchar ea;
+
+	ea = EA;              /* save interrupt mask register */
+	EA = 0;               /* exclsive control of TI flag against interrupt */
+
+	while(!TI_1) ;        /* wait for free to send  */
+
+	TI_1 = 0;             /* clear ready flag by myself */
+	SBUF1 = c;            /* send one character */
+
+	EA = ea;              /* recover interrupt mask register */
+}
+
+/* end of file */

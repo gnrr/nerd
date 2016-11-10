@@ -1,0 +1,73 @@
+
+all_ext.h,43
+#define __ALL_EXT_H____ALL_EXT_H__25,924
+
+amikbd.c,419
+void usb_isr(void) interrupt 8 using 1;using34,1092
+void resume_isr(void) interrupt 6 using 2;using35,1132
+static void amikbd_comm(void)amikbd_comm49,1688
+static void setup_timer2_int()setup_timer2_int326,9045
+static void setup_keyboard(void)setup_keyboard354,9658
+static void setup_timer0(void)setup_timer0383,10370
+Byte _sdcc_external_startup()_sdcc_external_startup407,11052
+void main()main432,11771
+
+amikbd.h,1094
+#define KBD_CLOCK_PORT KBD_CLOCK_PORT36,1096
+#define KBD_CLOCK_PIN KBD_CLOCK_PIN37,1125
+#define KBD_CLOCK_OE KBD_CLOCK_OE38,1157
+#define KBD_DATA_PORT KBD_DATA_PORT41,1212
+#define KBD_DATA_OUT KBD_DATA_OUT42,1241
+#define KBD_DATA_PIN KBD_DATA_PIN43,1269
+#define KBD_DATA_OE KBD_DATA_OE44,1301
+#define TIMER0_HIGH TIMER0_HIGH52,1464
+#define TIMER0_LOW TIMER0_LOW53,1492
+#define AMIKBD_PRESSED AMIKBD_PRESSED56,1522
+#define AMIKBD_KEY AMIKBD_KEY57,1559
+#define AMIKBD_RESET_WARNING AMIKBD_RESET_WARNING59,1648
+#define AMIKBD_LAST_KEYCODE_BAD AMIKBD_LAST_KEYCODE_BAD60,1685
+#define AMIKBD_BUFFER_OVERFLOW AMIKBD_BUFFER_OVERFLOW61,1722
+#define AMIKBD_UNUSED_1 AMIKBD_UNUSED_162,1759
+#define AMIKBD_SELFTEST_FAILED AMIKBD_SELFTEST_FAILED63,1796
+#define AMIKBD_INIT_PWRUP_KEYS AMIKBD_INIT_PWRUP_KEYS64,1833
+#define AMIKBD_TERM_PWRUP_KEYS AMIKBD_TERM_PWRUP_KEYS65,1870
+#define AMIKBD_UNUSED_2 AMIKBD_UNUSED_266,1907
+static code Byte keycode_map[] = {keycode_map72,2008
+#define AMIKBD_CAPSLOCK AMIKBD_CAPSLOCK83,2830
+#define USB_CAPSLOCK USB_CAPSLOCK84,2867
+
+globals.h,576
+#define __GLOBALS_H____GLOBALS_H__26,925
+volatile data Byte key_buffer[8];key_buffer32,987
+volatile bit kbd_new_keys;             /* apply_reset_values */kbd_new_keys35,1101
+volatile bit kbd_idle_mode;            /* apply_reset_values */kbd_idle_mode40,1195
+volatile data Byte kbd_idle_duration;  /* apply_reset_values */kbd_idle_duration45,1348
+volatile data Byte kbd_idle_counter;kbd_idle_counter46,1412
+static bit caps_operated;     /* apply_reset_values */caps_operated51,1523
+static bit caps_send_release; /* apply_reset_values */caps_send_release52,1578
+
+usb_core.c,45
+void setup_usb_int()setup_usb_int508,12848
+
+usb_core.h,1151
+#define __USB_CORE_H____USB_CORE_H__26,927
+#define USB_DT_DEVICE	USB_DT_DEVICE38,1067
+#define USB_DT_CONFIG	USB_DT_CONFIG39,1096
+#define USB_DT_STRING	USB_DT_STRING40,1125
+#define USB_DT_INTERFACE	USB_DT_INTERFACE41,1154
+#define USB_DT_ENDPOINT	USB_DT_ENDPOINT42,1185
+#define USB_DT_HID	USB_DT_HID44,1217
+#define USB_DT_REPORT	USB_DT_REPORT45,1243
+#define USB_DT_PHYSICAL	USB_DT_PHYSICAL46,1272
+#define USB_DT_HUB	USB_DT_HUB47,1303
+static bit is_ctrl_out0_kbd;         /* apply_reset_values */is_ctrl_out0_kbd57,1433
+volatile bit in1_busy;                 /* apply_reset_values */in1_busy60,1534
+static xdata setup_dat * data sdat = (xdata setup_dat *)&SETUPDAT;sdat63,1621
+#define NUM_STRING NUM_STRING65,1689
+static code Byte dev_desc[] = {dev_desc71,1786
+static code Byte conf_desc[] = {conf_desc93,2969
+static code Byte report_desc_keyboard[] = {report_desc_keyboard145,5435
+code Byte string_langid[] = { 0x04, 0x03, 0x00, 0x00 };string_langid182,6953
+code Byte string_mfg[] = {string_mfg185,7047
+code Byte string_prod[] = {string_prod192,7242
+code Byte string_if_keyboard[] = {string_if_keyboard200,7466

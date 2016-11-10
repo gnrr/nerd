@@ -1,0 +1,38 @@
+/*
+***************************************************************
+  Filename: serial-test.h
+  Last modified: Fri Jan 27 2006 20:39:32 LMT
+
+  Description: debug routines of serial out from sci1
+  compiler: sdcc
+
+  $Id: serial-test.h 33 2006-06-05 14:02:34Z gnrr $
+***************************************************************
+*/
+
+#ifndef __SERIAL_TEST_H__
+#define __SERIAL_TEST_H__
+
+#include <8051.h>
+#include "ezusb_reg.h"
+
+#include "common.h"
+
+/* bit masks */
+#define bmRXD		0x08        /* bit3 */
+#define bmTXD		0x04        /* bit2 */
+
+/* baud-rate selection */
+#define BPS_9600	256-39		/* timer value for 9600bps (1/39) */
+#define BPS_14400	256-26		/*             for 14400bps (1/26) */
+#define BPS_19200	256-20		/*             for 19200bps (1/20) */
+#define BPS_28800	0xF3		/*             for 28800bps */
+#define BPS_38400	0xF6		/*             for 38400bps */
+#define BPS_57600	0xF9		/*             for 57600bps */
+
+#define CNT_BPS BPS_38400       /* choose baud-rate */
+
+
+#endif /* !__SERIAL_TEST_H__ */
+
+/* end of file */

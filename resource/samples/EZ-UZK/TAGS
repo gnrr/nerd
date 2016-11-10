@@ -1,0 +1,111 @@
+
+FW.C,458
+#define	min(min23,830
+#define	max(max24,868
+volatile BOOL	GotSUD;GotSUD33,1269
+BOOL		Rwuen;Rwuen34,1292
+BOOL		Selfpwr;Selfpwr35,1306
+volatile BOOL	Sleep;						// Sleep mode enable flagSleep36,1322
+WORD	pDeviceDscr;	// Pointer to Device Descriptor; Descriptors may be movedpDeviceDscr38,1377
+WORD	pConfigDscr;	pConfigDscr39,1454
+WORD	pStringDscr;	pStringDscr40,1474
+void main(void)main74,2475
+void SetupCommand(void)SetupCommand209,7122
+
+PERIPH.C,3713
+#define MOUSE	MOUSE24,898
+# define PUTchar(PUTchar42,1261
+# define PUTstring(PUTstring43,1295
+# define PUThex(PUThex44,1347
+# define PUTchar(PUTchar46,1402
+# define PUTstring(PUTstring47,1423
+# define PUThex(PUThex48,1446
+#define UR_GET_REPORT	UR_GET_REPORT54,1527
+#define UR_SET_REPORT	UR_SET_REPORT55,1557
+#define UR_GET_IDLE	UR_GET_IDLE56,1587
+#define UR_SET_IDLE	UR_SET_IDLE57,1616
+#define     IDLE_TIME_RATIO IDLE_TIME_RATIO58,1645
+#define UR_GET_PROTOCOL	UR_GET_PROTOCOL59,1698
+#define UR_SET_PROTOCOL	UR_SET_PROTOCOL60,1730
+# define IF_HID1 IF_HID167,1859
+# define IF_HID2 IF_HID268,1926
+# define IF_HID3 IF_HID369,1992
+# define N_IFs N_IFs70,2057
+# define IF_HID1 IF_HID172,2134
+# define IF_HID2 IF_HID273,2201
+# define N_IFs N_IFs74,2267
+#define HID1_IN_DATA_LEN HID1_IN_DATA_LEN78,2366
+#define HID1_OUT_DATA_LEN HID1_OUT_DATA_LEN79,2420
+#define HID2_IN_DATA_LEN HID2_IN_DATA_LEN82,2502
+#define HID2_OUT_DATA_LEN HID2_OUT_DATA_LEN83,2573
+#define HID3_IN_DATA_LEN HID3_IN_DATA_LEN86,2666
+BYTE Configuration;		// Current configurationConfiguration164,5035
+BYTE AlternateSetting;	// Alternate settingsAlternateSetting165,5082
+#define INxBUF(INxBUF170,5187
+#define INxBC(INxBC171,5227
+BYTE INxBUF_is_busy[N_IFs];INxBUF_is_busy186,5842
+BYTE Protocol[N_IFs];		/* (nothing is influenced by this value) */Protocol191,5912
+BYTE Idle_Rate[N_IFs];Idle_Rate192,5980
+WORD idle_timer[N_IFs];idle_timer193,6004
+BYTE xdata work_INxBUF[N_IFs][64];		/* 64 >= max of HIDn_IN_DATA_LEN */work_INxBUF194,6029
+#define HT_NO_TRIGGER HT_NO_TRIGGER196,6104
+#define HT_WORK_INxBUF_READY HT_WORK_INxBUF_READY197,6138
+#define HT_IDLE_TIME_ELAPSED HT_IDLE_TIME_ELAPSED198,6210
+BYTE HIDx_trigger[N_IFs];HIDx_trigger199,6284
+BYTE code HIDx_in_data_len[N_IFs] = {HIDx_in_data_len204,6372
+#define HEAD_RESET HEAD_RESET246,7744
+#define HEAD_LEDS HEAD_LEDS247,7814
+#define HEAD_CTRL HEAD_CTRL248,7839
+#define HEAD_KEYS HEAD_KEYS249,7899
+#define HEAD_MOUS HEAD_MOUS250,7924
+#define MOUSE_DATA_FILTER MOUSE_DATA_FILTER261,8379
+#define RECV_for_HID1 RECV_for_HID1271,8691
+#define RECV_for_HID2 RECV_for_HID2272,8738
+#define RECV_for_HID3 RECV_for_HID3273,8785
+#define RECV_NULL_or_IDLE RECV_NULL_or_IDLE274,8832
+BYTE recv_target;				/* I have to handle HEAD_MOUS when !MOUSE */recv_target275,8877
+BYTE recv_ptr;recv_ptr276,8944
+#define MON_LED_OFF MON_LED_OFF281,8987
+#define MON_LED_ON MON_LED_ON282,9024
+BYTE mon_led_timer;mon_led_timer283,9062
+void TD_Init(void) 				// Called once at startupTD_Init290,9334
+void TD_Poll(void)TD_Poll379,11109
+BOOL TD_Suspend(void)TD_Suspend596,16918
+BOOL TD_Resume(void)TD_Resume606,17046
+BOOL DR_SetupCommand(void)DR_SetupCommand637,18291
+BOOL DR_GetDescriptor(void)DR_GetDescriptor832,22997
+BOOL DR_SetConfiguration(void)	// Called when a Set Configuration command is receivedDR_SetConfiguration902,24496
+BOOL DR_GetConfiguration(void)	// Called when a Get Configuration command is receivedDR_GetConfiguration910,24693
+BOOL DR_SetInterface(void) 		// Called when a Set Interface command is receivedDR_SetInterface919,24923
+BOOL DR_GetInterface(void) 		// Called when a Set Interface command is receivedDR_GetInterface927,25115
+BOOL DR_GetStatus(void)DR_GetStatus936,25340
+BOOL DR_ClearFeature(void)DR_ClearFeature943,25417
+BOOL DR_SetFeature(void)DR_SetFeature950,25497
+void answer_for_control_in(BYTE xdata *ptr, WORD len)answer_for_control_in968,25924
+void xbzero(BYTE xdata *dst, BYTE len)xbzero1018,26964
+void xmemcpy(BYTE xdata *dst, BYTE xdata *src, BYTE len)xmemcpy1031,27110
+void filter_mouse_data(BYTE xdata *dst, BYTE len)filter_mouse_data1045,27332
+
+TIMER0.C,123
+BOOL timer0_tick;timer0_tick20,389
+void init_timer0(void)init_timer025,438
+#define COUNT_INITIAL COUNT_INITIAL30,531
+
+UART.C,41
+void init_uart0(void)init_uart054,1658
+
+UART1.C,608
+#define N_BUFF N_BUFF112,4647
+#define BUFF_PTR_MASK BUFF_PTR_MASK120,4953
+BYTE send_buff[N_BUFF];send_buff122,4990
+BYTE send_in_ptr, send_out_ptr;send_in_ptr123,5015
+BYTE send_in_ptr, send_out_ptr;send_out_ptr123,5015
+BYTE n_send;n_send124,5048
+BOOL ti1_will_come;ti1_will_come125,5062
+BYTE recv_buff[N_BUFF];recv_buff127,5085
+BYTE recv_in_ptr, recv_out_ptr;recv_in_ptr128,5110
+BYTE recv_in_ptr, recv_out_ptr;recv_out_ptr128,5110
+BYTE n_recv;n_recv129,5143
+void init_uart1(void)init_uart1135,5190
+short peek_recv(void)peek_recv188,6417
+void set_to_send(BYTE c)set_to_send207,6756

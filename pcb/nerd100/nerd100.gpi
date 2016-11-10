@@ -1,0 +1,47 @@
+Photoplotter Info File: D:/work/eagle/PROJ/nerd100/out/nerd100.gpi
+
+ Date              : 2006/02/05 17:59:13 
+ Plotfile          : D:/work/eagle/PROJ/nerd100/out/nerd100.sts
+ Apertures         : generated: 
+ Device            : Gerber photoplotter with RS-274-X aperture generation
+
+Parameter settings:
+
+ Emulate Apertures : no
+ Emulate Thermal   : no
+ Emulate Annulus   : no
+ Tolerance Draw  + :  0.00 %
+ Tolerance Draw  - :  0.00 %
+ Tolerance Flash + :  0.00 %
+ Tolerance Flash - :  0.00 %
+ Rotate            : no
+ Mirror            : yes
+ Optimize          : yes
+ Auto fit          : yes
+ OffsetX           : 0inch
+ OffsetY           : 0inch
+
+Plotfile Info:
+
+ Coordinate Format : 2.4
+ Coordinate Units  : Inch
+ Data Mode         : Absolute
+ Zero Suppression  : None
+ End Of Block      : *
+
+Apertures used:
+
+ Code     Shape     Size                  used
+
+ D10      round     0.0336inch              13
+ D11      round     0.0624inch               2
+ D12      round     0.0425inch               2
+ D13      round     0.1063inch               4
+ D14      round     0.2362inch               1
+ D15      octagon   0.1020inch              22
+ D16      octagon   0.0720inch               8
+ D17      oval      0.0672inch x 0.1232inch     3
+ D18      round     0.0992inch               2
+ D19      round     0.0571inch               4
+ D20      round     0.0528inch              68
+

@@ -1,0 +1,124 @@
+/*
+ * change log of UZK firmware
+ *   by uratan! 2004.5.27
+ */
+
+-------------------------------------------------------------
+2004.07.27 add Japanese comments
+    makefile --- add comments
+    link.awk --- add comments
+    dscr.a51 --- add comments
+    usbjmptb.a51 --- add comments
+    fw.c --- add comments
+    periph.c --- add comments
+    timer0.c --- add comments
+    uart.c --- add comments
+    uart1.c --- add comments
+        --- version 0180
+-------------------------------------------------------------
+2004.07.17 misc small tunings
+    dscr.a51 --- bMaxPower as 50mA
+    periph.c --- disable 24MHz clock output, turn LED off when suspend
+        --- version 0170
+-------------------------------------------------------------
+2004.07.15 uart1 back to 9600bps, report-descriptor, control packet
+    makefile --- change PROJect name
+    dscr.a51 --- usage_maximum of keyboard/mouse
+    uart.c --- correct comments
+    uart1.c --- 9600bps, add comments
+    periph.c --- pass 'C' as control packet
+        --- version 0160
+-------------------------------------------------------------
+2004.06.19 uart1 as 14400bps, set_to_send()
+    dscr.a51 --- remove unused descriptor
+    periph.c --- filter mouse contents avoid HEAD_RESET
+        --- version 0150
+-------------------------------------------------------------
+2004.06.04 uart1 as 14400bps, set_to_send()
+    dscr.a51 --- only version number
+    uart1.c --- 14400bps, set_to_send() waits when buffer full, comments
+    periph.c --- comments, etc.
+        --- version 0140
+-------------------------------------------------------------
+2004.06.04 correct idle_rate handling, reduce CODEs (step 6)
+    makefile --- modify & clean C compile options, UDEBUG=0 is default
+    dscr.a51 --- only version number
+    fw.c --- kill about wake up interrupt
+    periph.c --- USB ISR_xxx() using register bank 2, fix about idle_rate, #if UDEBUG, clean and comments
+    timer0.c --- timer0_isr() using register bank 3
+    uart1.c --- serial1_isr() using regster bank 1
+    uart.c --- #if UDEBUG
+        --- version 0130
+-------------------------------------------------------------
+2004.06.04 try to fix (uart ?) hangup problem, etc.
+    dscr.a51 --- only version number
+    uart.c --- exclusive control on TI bit
+    periph.c --- HIDx_trigger, HEAD_RESET, bmHS, IN3BUF, cleans, renamings, comments, debug uart, etc.
+    fw.c --- a clean
+    timer0.c --- a clean
+        --- version 0120
+-------------------------------------------------------------
+2004.06.03 debug uart functions are "reentrant", etc.
+    dscr.a51 --- only version number
+    uart.c --- "reentrant" modifier added for all function, reduce codes
+    uart1.c --- remove unused get_n_recv()
+    periph.c --- adapt changes above, comments
+        --- version 0110
+-------------------------------------------------------------
+2004.06.03 reduce CODEs (step 5)
+    dscr.a51 --- only version number
+    uart.c --- reduce code size with "xdata", comments
+    periph.c --- LED control, USB state control, comments, etc.
+        --- version 0100
+-------------------------------------------------------------
+2004.06.02 reduce CODEs (step 5)
+    dscr.a51 --- only version number
+    periph.c --- all endpoint related resouces are accessed by index
+        --- version 0090
+-------------------------------------------------------------
+2004.06.02 reduce CODEs (step 4)
+    dscr.a51 --- only version number
+    periph.c --- renamings, comments, clean ups, etc.
+        --- version 0080
+-------------------------------------------------------------
+2004.06.02 reduce CODEs (step 3)
+    dscr.a51 --- enable (mouse)
+    periph.c --- enable MOUSE, UDEBUG, idle_rate[], renamings, etc.
+        --- version 0070
+-------------------------------------------------------------
+2004.06.02 reduce CODEs (step 2)
+    dscr.a51 --- shorten string descriptors, etc.
+    usbjmptb.a51 --- remove ISR_Sutok, rename ISR_dummy
+    fw.c --- disable SUTOK intr, remove DR_VendorCmnd()
+    periph.c --- remove unused codes, shorten strings, etc.
+        --- version 0060
+-------------------------------------------------------------
+2004.06.01 reduce CODEs (step 1)
+    dscr.a51 --- only version number
+    fw.c --- use "xdata" modifier, etc.
+    periph.c --- add xbzero(), xmemcpy(), use "xdata" modifier, etc.
+    uart.c --- reduce codes (a little)
+        --- version 0050
+-------------------------------------------------------------
+2004.06.01 add mouse device (disabled)
+    dscr.a51 --- add mouse as HID3
+    periph.c --- add HID3 misc protocol handling
+        --- version 0040
+-------------------------------------------------------------
+2004.06.01 change expand HID2 in pipe data len to 2
+    dscr.a51 --- expand HID2 in length
+    usbjmptb.a51 --- clean up
+    periph.c --- expand HID2 in length, etc.
+        --- version 0030
+-------------------------------------------------------------
+2004.06.01 change inner/outer protocol for mouse event handling
+    dscr.a51 --- output length is 9 bytes on HID2 control pipe
+    usbjmptb.a51 --- add ISR_Ep3in, remove ISR_Sof, ISR_IBN, ISR_Ep0in, ISR_Ep0out
+    periph.c --- add/remove ISRs, add about MOUSE protocol handling
+    uart1.c --- add 14400/19200bps setting as comment
+        --- version 0020
+-------------------------------------------------------------
+2004.05.27 first registeration
+        --- version 0010
+-------------------------------------------------------------
+

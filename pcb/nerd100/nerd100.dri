@@ -1,0 +1,52 @@
+Drill Station Info File: D:/work/eagle/PROJ/nerd100/nerd100.dri
+
+ Date              : 2006/02/05 17:56:07 
+ Drills            : D:/work/eagle/PROJ/nerd100/nerd100.drl
+ Device            : Excellon drill station with user supplied rack file
+
+Parameter settings:
+
+ Tolerance Drill + : 12.00 %
+ Tolerance Drill - : 12.00 %
+ Rotate            : no
+ Mirror            : no
+ Optimize          : yes
+ Auto fit          : yes
+ OffsetX           : 0inch
+ OffsetY           : 0inch
+ Layers            : Drills Holes
+
+Drill File Info:
+
+ Data Mode         : Absolute
+ Units             : 1/10000 Inch
+
+Drill Tolerances:
+
+ -- Requested --  -- Used Drill --
+
+ Size       used  Code  Size
+
+ 28.000mil    81  T01   0.700mm
+ 32.000mil     2  T02   0.900mm
+ 52.000mil    22  T05   1.300mm
+ 40.000mil     8  T03   1.000mm
+ 36.000mil     3  T02   0.900mm
+ 1.400mm       2  T05   1.300mm
+
+Drills used:
+
+ Code  Size       used
+
+ T01   0.700mm      85
+ T02   0.900mm       7
+ T03   1.000mm       8
+ T05   1.300mm      24
+ T06   1.500mm       4
+ T09   5.000mm       1
+
+Total number of drills: 129
+
+Plotfiles:
+
+ D:/work/eagle/PROJ/nerd100/nerd100.drd

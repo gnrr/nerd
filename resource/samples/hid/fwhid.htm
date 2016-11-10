@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>HID code using frameworks for the EZ-USB</TITLE>
+</HEAD>
+<BODY bgcolor="#FFFFFF" text="#000000" link="#3333FF">
+<h1 align="center"><font face="Arial, Helvetica, sans-serif">HID code <br>
+  using frameworks for the EZ-USB</font></h1>
+<P>This is the readme file for <I>fwhid.zip</I>. Fwhid is HID firmware for Cypress 
+  Semiconductors' EZ-USB chip. The code is based on Cypress' frameworks C code 
+  and is available from Lakeview Research at <a href="http://www.lvr.com/">http://www.lvr.com</a>.</P>
+<B><I><FONT FACE="Arial"> 
+<h2><font face="Arial, Helvetica, sans-serif">About the code</font></h2>
+</font></i></B>
+<P>I developed the firmware using Keil's C compiler and uVision V1.32. The firmware 
+  is an adaptation of Cypress' bulktest example. The code requires the full (not 
+  evaluation) version of the C compiler.</P>
+<P>The firmware defines the device as a member of the human-interface device (HID) 
+  class. It enables the device to send and receive 2 bytes of generic data. The 
+  code works with the <I>usbhidio</I> application available from <a href="http://www.lvr.com/usb.htm">www.lvr.com</a>.</P>
+
+<P>These are the major changes I made to the bulktest code:</P>
+
+<UL>
+  <LI>In <I>dscr.a51</I>, the class in the interface descriptor is HID, and I 
+    added a HID descriptor, a report descriptor, and two interrupt endpoint descriptors.</LI>
+<LI>In <I>fw.c</I>, I added code to enable the host to retrieve the report descriptor.</LI>
+<LI>In <I>periph.c</I>, I adapted the code to enable the HID endpoints to send and receive data.</LI>
+<LI><I>Dscr.h</i> and <I>ezsub.h</I> have additions required for the above changes.</LI></UL>
+
+
+<P>I left the rest of the code intact, even though some of it (such as code for 
+  the other endpoints) is unused.</P>
+<P>I surrounded each change or addition to the code with the following comments:</P>
+
+<I><P>  //HID code start</P>
+</I>
+<I><P>  //Hid code end</P>
+</I>
+<p>To avoid problems with paths, I recommend copying the program files to a new 
+  folder in the same location used for the other EZ-USB examples. (The default 
+  is <i>Anchor\EzUsb\Examples</i>).</p>
+<h2><font face="Arial, Helvetica, sans-serif"><i>Limitations</i></font></h2>
+<B><I><FONT FACE="Arial"></font></i></B>
+<P>This version of the code has limitations that I hope to eliminate eventually:</P>
+<ul>
+  <li>The host must be running Win98SE , Win2K, or later. This is because the 
+    code uses interrupt transfers for both In and Out reports. Windows 98 gold 
+    (original) supports only HID 1.0 and thus uses control transfers for Out reports.</li>
+  <li>The code supports only one report (report 0).</li>
+  <li>The code doesn't support Feature reports.</li>
+</ul>
+<B><I><FONT FACE="Arial">
+<h2><font face="Arial, Helvetica, sans-serif">Comments invited</font></h2>
+</font></i></B> 
+<P>I welcome whatever comments, bug reports, fixes (especially fixes!), critiques, suggestions, etc. that you may have about this code. Contact me at jan@Lvr.com</P>
+<B><I><FONT FACE="Arial">
+<h2><font face="Arial, Helvetica, sans-serif">For more information</font></h2>
+</font></i></B> 
+<P>I have much more information and example code for HID-class devices and other topics for USB developers on my USB page:</P>
+
+<P><a href="http://www.lvr.com/usb.htm/">http://www.lvr.com/usb.htm</a></P>
+
+<P>Jan Axelson</P>
+<P>Lakeview Research</P></BODY>
+</HTML>

@@ -1,0 +1,11 @@
+gnrr@destiny:~$ sdcc --print-search-dirs
+programs:
+d:\cygwin\usr\local\bin
+datadir:
+d:\cygwin\usr\local\bin\..
+includedir:
+d:\cygwin\usr\local\bin\..\include\mcs51
+d:\cygwin\usr\local\bin\..\include
+libdir:
+d:\cygwin\usr\local\bin\..\lib
+gnrr@destiny:~$

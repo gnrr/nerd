@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="48"
+   name=""
+   committed-date="2006-06-15T18:53:40.196102Z"
+   url="svn+ssh://gnrr@nazka/mnt/hda/svn-repos-root/nerd-firm/sdcc"
+   last-author="gnrr"
+   kind="dir"
+   uuid="90af31e1-7915-0410-90b2-d31633410784"
+   repos="svn+ssh://gnrr@nazka/mnt/hda/svn-repos-root/nerd-firm"
+   revision="48"/>
+</wc-entries>

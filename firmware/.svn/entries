@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="48"
+   name=""
+   committed-date="2006-06-15T18:53:40.196102Z"
+   url="svn+ssh://gnrr@nazka/mnt/hda/svn-repos-root/nerd-firm"
+   last-author="gnrr"
+   kind="dir"
+   uuid="90af31e1-7915-0410-90b2-d31633410784"
+   repos="svn+ssh://gnrr@nazka/mnt/hda/svn-repos-root/nerd-firm"
+   revision="48"/>
+<entry
+   committed-rev="41"
+   name="usb_core.c"
+   text-time="2006-06-16T23:59:06.043513Z"
+   committed-date="2006-06-05T14:10:28.757758Z"
+   checksum="db89cd32fc59217e707d6199b4acb123"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.462678Z"/>
+<entry
+   committed-rev="33"
+   name="serial-test.h"
+   text-time="2006-06-16T23:59:06.053528Z"
+   committed-date="2006-06-05T14:02:34.811031Z"
+   checksum="b2fc5653d9e0bd77a2a080e6f6bcb51a"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.472692Z"/>
+<entry
+   committed-rev="44"
+   name="usb_core.h"
+   text-time="2006-06-16T23:59:06.053528Z"
+   committed-date="2006-06-05T14:13:54.936103Z"
+   checksum="eaab432bbf460fdcf45ea5a42b0042f3"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.743081Z"/>
+<entry
+   committed-rev="49"
+   name="timestamp.h"
+   text-time="2006-06-23T15:55:49.731006Z"
+   committed-date="2006-06-23T15:57:56.843029Z"
+   checksum="56c03926aa787897d0d4064e7eadfbae"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.763110Z"
+   revision="49"/>
+<entry
+   committed-rev="45"
+   name="EEP00.HEX"
+   text-time="2006-06-16T23:59:06.073556Z"
+   committed-date="2006-06-05T14:14:58.307807Z"
+   checksum="9348d61d8c8ee19125bc6e1f766d29d8"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.783139Z"/>
+<entry
+   committed-rev="1"
+   name="initializer.asm"
+   text-time="2006-06-16T23:59:06.073556Z"
+   committed-date="2006-06-05T13:34:36.401680Z"
+   checksum="c22cbaa84f5a8db82e3079e91625b4ad"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.803168Z"/>
+<entry
+   committed-rev="49"
+   name="keymap_factory.h"
+   text-time="2006-06-23T15:55:18.295804Z"
+   committed-date="2006-06-23T15:57:56.843029Z"
+   checksum="b2dbf251c744a84dc4433858378acd95"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.813182Z"
+   revision="49"/>
+<entry
+   committed-rev="49"
+   name="usage_id.h"
+   text-time="2006-06-23T15:55:36.261638Z"
+   committed-date="2006-06-23T15:57:56.843029Z"
+   checksum="01cbedb93a28b6d9b42da02ef8c6cc62"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.823196Z"
+   revision="49"/>
+<entry
+   committed-rev="47"
+   name="nerd.c"
+   text-time="2006-06-16T23:59:06.093585Z"
+   committed-date="2006-06-05T14:23:11.368564Z"
+   checksum="384299a63a381793a89d3bc04fd27e24"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.833211Z"/>
+<entry
+   committed-rev="31"
+   name="ezusb_reg.h"
+   text-time="2006-06-16T23:59:06.103600Z"
+   committed-date="2006-06-05T14:01:24.170621Z"
+   checksum="04cabba9404dc4af9272294902b80ae2"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.853240Z"/>
+<entry
+   name="sdcc"
+   kind="dir"/>
+<entry
+   committed-rev="49"
+   name="keymap.h"
+   text-time="2006-06-23T15:55:13.318648Z"
+   committed-date="2006-06-23T15:57:56.843029Z"
+   checksum="80539f35b3182000a90e2d461bcfd054"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.943369Z"
+   revision="49"/>
+<entry
+   committed-rev="34"
+   name="serial-test.c"
+   text-time="2006-06-16T23:59:06.113614Z"
+   committed-date="2006-06-05T14:03:14.385112Z"
+   checksum="75aed1e23d44002455d57c385e7e8089"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.953384Z"/>
+<entry
+   committed-rev="48"
+   name="Makefile"
+   text-time="2006-06-16T23:59:06.123628Z"
+   committed-date="2006-06-15T18:53:40.196102Z"
+   checksum="30368da26dfd7d6095c196d0e08da8a4"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.963398Z"/>
+<entry
+   committed-rev="47"
+   name="nerd.h"
+   text-time="2006-06-16T23:59:06.123628Z"
+   committed-date="2006-06-05T14:23:11.368564Z"
+   checksum="764973e3f68d53a74c3fd8bec9acb66f"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:05.973412Z"/>
+<entry
+   committed-rev="47"
+   name="common.h"
+   text-time="2006-06-16T23:59:06.133643Z"
+   committed-date="2006-06-05T14:23:11.368564Z"
+   checksum="960de84bd1452f8ad8405b458e00e4ed"
+   last-author="gnrr"
+   kind="file"
+   prop-time="2006-06-16T23:59:06.033499Z"/>
+</wc-entries>

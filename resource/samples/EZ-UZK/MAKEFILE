@@ -1,0 +1,81 @@
+#
+# makefile for my-ezusb
+#   by uratan! 2004.5.19
+#
+	#
+	# unix 仕様の make.exe(と awk.exe) があれば make 一発ですよ
+	#
+
+.SUFFIXES:	.c .a51 .obj
+
+PROJ	= ez-uzk
+
+CC	= C:\Keil\C51\BIN\C51
+AS	= C:\Keil\C51\BIN\A51
+LD	= C:\KEIL\C51\BIN\BL51
+CV	= C:\KEIL\C51\BIN\OH51
+CV2	= C:\Cypress\USB\Bin\hex2bix
+
+#
+# my test options
+#
+AFLAGS	= SET(SMALL) DEBUG EP
+CFLAGS	= DF(MINIEZUSB,UDEBUG=0) OT(9,SPEED) NOAREGS ID(c:\Cypress\USB\Target\Inc) CD
+	#
+	# 私の使っている dmake.exe (DOS版)の都合で、オプションは短縮表記に
+	# なっています。コード短縮のため、特殊なオプション使いまくりです。
+	# マクロ UDEBUG=1 にすると、serial0 から 57600bps でデバッグ情報を
+	# 出力します。KEIL のデバッグ環境は使っていないので、省きました。
+	#
+#
+# original options on UV2 environment are
+#    AFLAGS	= SET(SMALL) DEBUG EP
+#    CFLAGS	= OT(6,SPEED) DB OE ID(c:\Cypress\USB\Target\Inc;C:\Keil\C51\INC)
+#
+# options long name
+#   DF      "DEFINE"       - (no need to comment)
+#   OT      "OPTIMIZE"     - optimization level
+#   NOAREGS    <--         - do not access registers by absolute address
+#   DB      "DEBUG"        - generate debug information
+#   OE      "OBJECTEXTEND" - output more debug infomation
+#   ID      "INCDIR"       - include path
+#   CD      "CODE"         - generate assembly linsting
+#
+
+
+OBJS	= fw.obj periph.obj dscr.obj uart.obj uart1.obj
+OBJS2	= timer0.obj USBJmpTb.obj
+LIBS1	= C:\Cypress\USB\Target\Lib\Ezusb\Ezusb.lib
+##LIBS2	= C:\Cypress\USB\Target\Lib\Ezusb\USBJmpTb.OBJ
+
+all:	$(PROJ).iic
+
+clean:
+	-rm -f $(PROJ).iic
+	-rm -f $(PROJ).hex
+	-rm -f $(PROJ) $(PROJ).m51
+	-rm -f link.cmd
+	-rm -f *.lst
+	-rm -f $(OBJS)
+	-rm -f $(OBJS2)
+	
+$(PROJ).iic:	$(PROJ).hex
+	$(CV2) -I $(PROJ).hex
+
+$(PROJ).hex:	$(PROJ)
+	$(CV) $(PROJ)
+
+link.cmd:	makefile link.awk
+	awk -f link.awk makefile > link.cmd
+
+$(PROJ):	$(OBJS) $(OBJS2) link.cmd
+	$(LD) @link.cmd
+
+#
+# default rule
+#
+.c.obj:
+	$(CC) $*.c $(CFLAGS)
+.a51.obj:
+	$(AS) $*.a51 $(AFLAGS)
+

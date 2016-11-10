@@ -1,0 +1,19 @@
+Partlist exported from D:/work/eagle/PROJ/nerd100/nerd100.sch at 2006/02/06 21:02:03 
+
+Qty Value          Device                      Parts                                                                                                                         
+1   12MHz          CRYTALHC49U-V               X1                                                                                                                            
+9   0.1u           C-EUC0805                   C1, C2, C3, C4, C5, C6, C11, C12, C13                                                                                         
+1   1.5k           R-US_R0805                  R4                                                                                                                            
+2   2.2k           R-US_R0805                  R5, R6                                                                                                                        
+2   10k            R-US_R0805                  R1, R7                                                                                                                        
+2   22 ohm         R-US_R0805                  R2, R3                                                                                                                        
+2   22p            C-EUC0805                   C7, C8                                                                                                                        
+2   22u 16v        CPOL-EUC                    C9, C10                                                                                                                       
+1   24LC64SM       24LC64SM                    U3                                                                                                                            
+1   EG1313         EG1313                      SW1                                                                                                                           
+1   EZ-USB-2131S   EZ-USB-2131S                U1                                                                                                                            
+1   LM3480IM3-3.3  LM3840                      U2                                                                                                                            
+2   S15B-PH-SM3-TB S15B-PH-SM-TBS15B-PH-SM3-TB CN2, CN3                                                                                                                      
+1   UX60-MB-5S8    UX60-MB-5S8UX60-MB-5S8      CN1                                                                                                                           
+-----------------------------------------------------
+28

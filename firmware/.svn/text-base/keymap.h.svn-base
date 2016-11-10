@@ -1,0 +1,877 @@
+/*
+ * Filename: keymap.h
+ * Last modified: Sat Jun 24 2006 00:55:13 LMT
+ *
+ * ユーザー用キーマップ定義
+ *
+ * 電源投入時 ｷｰﾏｯﾌﾟｾｯﾄ選択用のｷｰが押されていないときのｷｰﾏｯﾌﾟｾｯﾄ --> #0
+ *								   押されているときのｷｰﾏｯﾌﾟｾｯﾄ	 --> #1
+ */
+
+/* ｷｰﾏｯﾌﾟ番号定義 */
+enum {
+    KEYMAP_PLAIN = 0,       /* 0:標準 (Nerd X なし)                   */
+    KEYMAP_NCTRL,           /* 1:Nerd Control と同時押し              */
+    KEYMAP_NMETA,           /* 2:Nerd Meta と同時押し                 */
+    KEYMAP_NCTRL_NMETA,     /* 3:Nerd Control + Nerd Meta  と同時押し */
+    KEYMAP_NFUNC,           /* 4:Nerd Function と同時押し             */
+    KEYMAP_NLOCK,           /* 5:Nerd Lock 有効時                     */
+    KEYMAP_MAX
+};
+
+
+/*
+ * ｷｰﾏｯﾌﾟｾｯﾄ選択用のｷｰ(ｽｷｬﾝｺｰﾄﾞ)を指定する
+ * ｷｰﾏｯﾌﾟｾｯﾄ選択自体を無効にする場合はｺﾒﾝﾄｱｳﾄ
+*/
+#define SCAN_KMAPSET_SELECT	SCAN_SPACE
+
+
+/*
+ * 初期化後に自動的に送信したいｷｰがあれば、そのUSIDを指定する
+ *
+ * MODｷｰ と NERDｷｰ と 継承ｷｰ は不可
+ * 6個まで指定可能
+ */
+static code uchar PreSend[] = {
+/*     USID_KBD_LOCK_NUM, */
+/*     USID_PAD_NUM_LOCK */
+    USID_NONE
+};
+
+
+/*
+ * ｷｰﾏｯﾌﾟ定義配列
+ * HHKのｽｷｬﾝｺｰﾄﾞ--> HIDｷｰﾎﾞｰﾄﾞがﾎｽﾄへ送信する Usage ID に変換する
+ * Keymap[x][0]: Plain (Nerdｷｰ押下なしの時) KEYMAP_PLAIN
+ * Keymap[x][1]: Nerd Control               KEYMAP_NCTRL
+ * Keymap[x][2]: Nerd Meta                  KEYMAP_NMETA
+ * Keymap[x][3]: Nerd Control + Nerd Meta   KEYMAP_NCTRL_NMETA
+ * Keymap[x][4]: Nerd Function              KEYMAP_NFUNC
+ * Keymap[x][5]: Nerd Lock                  KEYMAP_NLOCK
+ */
+static code uchar Keymap[2][KEYMAP_MAX][64] = {
+	/* ---------------------------------------------- keymap-set #0 ------- */
+	{
+		/* [0] plain value (without Nerd X): KEYMAP_PLAIN */
+		{
+			USID_KBD_2,				/* 0.0x00: 2		*/
+			USID_KBD_Q,				/* 0.0x01: q		*/
+			USID_KBD_W,				/* 0.0x02: w		*/
+			USID_KBD_S,				/* 0.0x03: s		*/
+			USID_KBD_A,				/* 0.0x04: a		*/
+			USID_KBD_Z,				/* 0.0x05: z		*/
+			USID_KBD_X,				/* 0.0x06: x		*/
+			USID_KBD_C,				/* 0.0x07: c		*/
+			USID_KBD_3,				/* 0.0x08: 3		*/
+			USID_KBD_4,				/* 0.0x09: 4		*/
+			USID_KBD_R,				/* 0.0x0A: r		*/
+			USID_KBD_E,				/* 0.0x0B: e		*/
+			USID_KBD_D,				/* 0.0x0C: d		*/
+			USID_KBD_F,				/* 0.0x0D: f		*/
+			USID_KBD_V,				/* 0.0x0E: v		*/
+			USID_KBD_B,				/* 0.0x0F: b		*/
+			USID_KBD_5,				/* 0.0x10: 5		*/
+			USID_KBD_6,				/* 0.0x11: 6		*/
+			USID_KBD_Y,				/* 0.0x12: y		*/
+			USID_KBD_T,				/* 0.0x13: t		*/
+			USID_KBD_G,				/* 0.0x14: g		*/
+			USID_KBD_H,				/* 0.0x15: h		*/
+			USID_KBD_N,				/* 0.0x16: n		*/
+			USID_NONE,				/* 0.0x17: (none)	*/
+			USID_KBD_1,				/* 0.0x18: 1		*/
+			USID_KBD_ESC,			/* 0.0x19: ESC		*/
+			USID_KBD_TAB,			/* 0.0x1A: TAB		*/
+			USID_KBD_SPACE,			/* 0.0x1B: CTRL		*/
+			USID_MOD_SHIFT_L,		/* 0.0x1C: SHIFT L	*/
+			USID_MOD_ALT_L,			/* 0.0x1D: ALT L	*/
+			USID_NERD_META,			/* 0.0x1E: DIA L	*/
+			USID_NERD_CTRL,			/* 0.0x1F: SPACE	*/
+			USID_KBD_7,				/* 0.0x20: 7		*/
+			USID_KBD_8,				/* 0.0x21: 8		*/
+			USID_KBD_U,				/* 0.0x22: u		*/
+			USID_KBD_I,				/* 0.0x23: i		*/
+			USID_KBD_K,				/* 0.0x24: k		*/
+			USID_KBD_J,				/* 0.0x25: j		*/
+			USID_KBD_M,				/* 0.0x26: m		*/
+			USID_NONE,				/* 0.0x27: (none)	*/
+			USID_KBD_BACK_SLASH,	/* 0.0x28: \		*/
+			USID_KBD_GRAVE_ACCENT,	/* 0.0x29: `		*/
+			USID_KBD_BACKSPACE,		/* 0.0x2A: DEL		*/
+			USID_KBD_RETURN,		/* 0.0x2B: RETURN	*/
+			USID_NERD_LOCK,			/* 0.0x2C: Fn		*/
+			USID_MOD_SHIFT_R,		/* 0.0x2D: SHIFT R	*/
+			USID_NERD_FUNC,			/* 0.0x2E: ALT R	*/
+			USID_KBD_GRAVE_ACCENT,	/* 0.0x2F: DIA R	*/
+			USID_KBD_9,				/* 0.0x30: 9		*/
+			USID_KBD_0,				/* 0.0x31: 0		*/
+			USID_KBD_O,				/* 0.0x32: o		*/
+			USID_KBD_P,				/* 0.0x33: p		*/
+			USID_KBD_SEMI_COLON,	/* 0.0x34: ;		*/
+			USID_KBD_L,				/* 0.0x35: l		*/
+			USID_KBD_COMMA,			/* 0.0x36: ,		*/
+			USID_NONE,				/* 0.0x37: (none)	*/
+			USID_KBD_HYPHONE,		/* 0.0x38: -		*/
+			USID_KBD_EQUAL,			/* 0.0x39: =		*/
+			USID_KBD_BRACKET_END,	/* 0.0x3A: ]		*/
+			USID_KBD_BRACKET_START,	/* 0.0x3B: [		*/
+			USID_KBD_QUOTE,			/* 0.0x3C: '		*/
+			USID_KBD_SLASH,			/* 0.0x3D: /		*/
+			USID_KBD_DOT,			/* 0.0x3E: .		*/
+			USID_NONE				/* 0.0x3F: (none)	*/
+		},
+
+		/* [1] with Nerd Control: KEYMAP_NCTRL */
+		{
+			USID_INHERIT_PLAIN,		/* 1.0x00: 2		*/
+			USID_INHERIT_PLAIN,		/* 1.0x01: q		*/
+			USID_INHERIT_PLAIN,		/* 1.0x02: w		*/
+			USID_INHERIT_PLAIN,		/* 1.0x03: s		*/
+			USID_KBD_HOME,			/* 1.0x04: a		*/
+			USID_INHERIT_PLAIN,		/* 1.0x05: z		*/
+			USID_INHERIT_PLAIN,		/* 1.0x06: x		*/
+			USID_INHERIT_PLAIN,		/* 1.0x07: c		*/
+			USID_INHERIT_PLAIN,		/* 1.0x08: 3		*/
+			USID_INHERIT_PLAIN,		/* 1.0x09: 4		*/
+			USID_INHERIT_PLAIN,		/* 1.0x0A: r		*/
+			USID_KBD_END,			/* 1.0x0B: e		*/
+			USID_KBD_DELETE,		/* 1.0x0C: d		*/
+			USID_KBD_ARROW_R,		/* 1.0x0D: f		*/
+			USID_INHERIT_PLAIN,		/* 1.0x0E: v		*/
+			USID_KBD_ARROW_L,		/* 1.0x0F: b		*/
+			USID_INHERIT_PLAIN,		/* 1.0x10: 5		*/
+			USID_INHERIT_PLAIN,		/* 1.0x11: 6		*/
+			USID_INHERIT_PLAIN,		/* 1.0x12: y		*/
+			USID_INHERIT_PLAIN,		/* 1.0x13: t		*/
+			USID_INHERIT_PLAIN,		/* 1.0x14: g		*/
+			USID_KBD_BACKSPACE,		/* 1.0x15: h		*/
+			USID_KBD_ARROW_D,		/* 1.0x16: n		*/
+			USID_NONE,				/* 1.0x17: (none)	*/
+			USID_INHERIT_PLAIN,		/* 1.0x18: 1		*/
+			USID_INHERIT_PLAIN,		/* 1.0x19: ESC		*/
+			USID_INHERIT_PLAIN,		/* 1.0x1A: TAB		*/
+			USID_INHERIT_PLAIN,		/* 1.0x1B: CTRL		*/
+			USID_INHERIT_PLAIN,		/* 1.0x1C: SHIFT L	*/
+			USID_INHERIT_PLAIN,		/* 1.0x1D: ALT L	*/
+			USID_INHERIT_PLAIN,		/* 1.0x1E: DIA L	*/
+			USID_INHERIT_PLAIN,		/* 1.0x1F: SPACE	*/
+			USID_INHERIT_PLAIN,		/* 1.0x20: 7		*/
+			USID_INHERIT_PLAIN,		/* 1.0x21: 8		*/
+			USID_INHERIT_PLAIN,		/* 1.0x22: u		*/
+			USID_INHERIT_PLAIN,		/* 1.0x23: i		*/
+			USID_INHERIT_PLAIN,		/* 1.0x24: k		*/
+			USID_INHERIT_PLAIN,		/* 1.0x25: j		*/
+			USID_INHERIT_PLAIN,		/* 1.0x26: m		*/
+			USID_NONE,				/* 1.0x27: (none)	*/
+			USID_INHERIT_PLAIN,		/* 1.0x28: \		*/
+			USID_INHERIT_PLAIN,		/* 1.0x29: `		*/
+			USID_KBD_DELETE,		/* 1.0x2A: DEL		*/
+			USID_INHERIT_PLAIN,		/* 1.0x2B: RETURN	*/
+			USID_NONE,				/* 1.0x2C: Fn		*/
+			USID_INHERIT_PLAIN,		/* 1.0x2D: SHIFT R	*/
+			USID_NONE,				/* 1.0x2E: ALT R	*/
+			USID_INHERIT_PLAIN,		/* 1.0x2F: DIA R	*/
+			USID_INHERIT_PLAIN,		/* 1.0x30: 9		*/
+			USID_INHERIT_PLAIN,		/* 1.0x31: 0		*/
+			USID_INHERIT_PLAIN,		/* 1.0x32: o		*/
+			USID_KBD_ARROW_U,		/* 1.0x33: p		*/
+			USID_INHERIT_PLAIN,		/* 1.0x34: ;		*/
+			USID_INHERIT_PLAIN,		/* 1.0x35: l		*/
+			USID_INHERIT_PLAIN,		/* 1.0x36: ,		*/
+			USID_NONE,				/* 1.0x37: (none)	*/
+			USID_INHERIT_PLAIN,		/* 1.0x38: -		*/
+			USID_INHERIT_PLAIN,		/* 1.0x39: =		*/
+			USID_INHERIT_PLAIN,		/* 1.0x3A: ]		*/
+			USID_INHERIT_PLAIN,		/* 1.0x3B: [		*/
+			USID_INHERIT_PLAIN,		/* 1.0x3C: '		*/
+			USID_INHERIT_PLAIN,		/* 1.0x3D: /		*/
+			USID_INHERIT_PLAIN,		/* 1.0x3E: .		*/
+			USID_NONE				/* 1.0x3F: (none)	*/
+		},
+
+		/* [2] with Nerd Meta: KEYMAP_NMETA */
+		{
+			USID_INHERIT_PLAIN,		/* 2.0x00: 2		*/
+			USID_INHERIT_PLAIN,		/* 2.0x01: q		*/
+			USID_INHERIT_PLAIN,		/* 2.0x02: w		*/
+			USID_INHERIT_PLAIN,		/* 2.0x03: s		*/
+			USID_INHERIT_PLAIN,		/* 2.0x04: a		*/
+			USID_INHERIT_PLAIN,		/* 2.0x05: z		*/
+			USID_INHERIT_PLAIN,		/* 2.0x06: x		*/
+			USID_INHERIT_PLAIN,		/* 2.0x07: c		*/
+			USID_INHERIT_PLAIN,		/* 2.0x08: 3		*/
+			USID_INHERIT_PLAIN,		/* 2.0x09: 4		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0A: r		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0B: e		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0C: d		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0D: f		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0E: v		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0F: b		*/
+			USID_INHERIT_PLAIN,		/* 2.0x10: 5		*/
+			USID_INHERIT_PLAIN,		/* 2.0x11: 6		*/
+			USID_INHERIT_PLAIN,		/* 2.0x12: y		*/
+			USID_INHERIT_PLAIN,		/* 2.0x13: t		*/
+			USID_INHERIT_PLAIN,		/* 2.0x14: g		*/
+			USID_INHERIT_PLAIN,		/* 2.0x15: h		*/
+			USID_KBD_PAGE_DOWN,		/* 2.0x16: n		*/
+			USID_NONE,				/* 2.0x17: (none)	*/
+			USID_INHERIT_PLAIN,		/* 2.0x18: 1		*/
+			USID_INHERIT_PLAIN,		/* 2.0x19: ESC		*/
+			USID_INHERIT_PLAIN,		/* 2.0x1A: TAB		*/
+			USID_INHERIT_PLAIN,		/* 2.0x1B: CTRL		*/
+			USID_INHERIT_PLAIN,		/* 2.0x1C: SHIFT L	*/
+			USID_NONE,				/* 2.0x1D: ALT L	*/
+			USID_INHERIT_PLAIN,		/* 2.0x1E: DIA L	*/
+			USID_INHERIT_PLAIN,		/* 2.0x1F: SPACE	*/
+			USID_INHERIT_PLAIN,		/* 2.0x20: 7		*/
+			USID_INHERIT_PLAIN,		/* 2.0x21: 8		*/
+			USID_INHERIT_PLAIN,		/* 2.0x22: u		*/
+			USID_INHERIT_PLAIN,		/* 2.0x23: i		*/
+			USID_INHERIT_PLAIN,		/* 2.0x24: k		*/
+			USID_INHERIT_PLAIN,		/* 2.0x25: j		*/
+			USID_INHERIT_PLAIN,		/* 2.0x26: m		*/
+			USID_NONE,				/* 2.0x27: (none)	*/
+			USID_INHERIT_PLAIN,		/* 2.0x28: \		*/
+			USID_INHERIT_PLAIN,		/* 2.0x29: `		*/
+			USID_INHERIT_PLAIN,		/* 2.0x2A: DEL		*/
+			USID_INHERIT_PLAIN,		/* 2.0x2B: RETURN	*/
+			USID_NONE,				/* 2.0x2C: Fn		*/
+			USID_INHERIT_PLAIN,		/* 2.0x2D: SHIFT R	*/
+			USID_INHERIT_PLAIN,		/* 2.0x2E: ALT R	*/
+			USID_INHERIT_PLAIN,		/* 2.0x2F: DIA R	*/
+			USID_INHERIT_PLAIN,		/* 2.0x30: 9		*/
+			USID_INHERIT_PLAIN,		/* 2.0x31: 0		*/
+			USID_INHERIT_PLAIN,		/* 2.0x32: o		*/
+			USID_KBD_PAGE_UP,		/* 2.0x33: p		*/
+			USID_INHERIT_PLAIN,		/* 2.0x34: ;		*/
+			USID_INHERIT_PLAIN,		/* 2.0x35: l		*/
+			USID_INHERIT_PLAIN,		/* 2.0x36: ,		*/
+			USID_NONE,				/* 2.0x37: (none)	*/
+			USID_INHERIT_PLAIN,		/* 2.0x38: -		*/
+			USID_INHERIT_PLAIN,		/* 2.0x39: =		*/
+			USID_INHERIT_PLAIN,		/* 2.0x3A: ]		*/
+			USID_INHERIT_PLAIN,		/* 2.0x3B: [		*/
+			USID_INHERIT_PLAIN,		/* 2.0x3C: '		*/
+			USID_INHERIT_PLAIN,		/* 2.0x3D: /		*/
+			USID_INHERIT_PLAIN,		/* 2.0x3E: .		*/
+			USID_NONE				/* 2.0x3F: (none)	*/
+		},
+
+		/* [3] with Nerd Control + Nerd Meta: KEYMAP_NCTRL_NMETA */
+		{
+			USID_INHERIT_META,		/* 3.0x00: 2		*/
+			USID_INHERIT_META,		/* 3.0x01: q		*/
+			USID_INHERIT_META,		/* 3.0x02: w		*/
+			USID_INHERIT_META,		/* 3.0x03: s		*/
+			USID_INHERIT_META,		/* 3.0x04: a		*/
+			USID_INHERIT_META,		/* 3.0x05: z		*/
+			USID_INHERIT_META,		/* 3.0x06: x		*/
+			USID_INHERIT_META,		/* 3.0x07: c		*/
+			USID_INHERIT_META,		/* 3.0x08: 3		*/
+			USID_INHERIT_META,		/* 3.0x09: 4		*/
+			USID_INHERIT_META,		/* 3.0x0A: r		*/
+			USID_INHERIT_META,		/* 3.0x0B: e		*/
+			USID_INHERIT_META,		/* 3.0x0C: d		*/
+			USID_INHERIT_META,		/* 3.0x0D: f		*/
+			USID_INHERIT_META,		/* 3.0x0E: v		*/
+			USID_INHERIT_META,		/* 3.0x0F: b		*/
+			USID_INHERIT_META,		/* 3.0x10: 5		*/
+			USID_INHERIT_META,		/* 3.0x11: 6		*/
+			USID_INHERIT_META,		/* 3.0x12: y		*/
+			USID_INHERIT_META,		/* 3.0x13: t		*/
+			USID_INHERIT_META,		/* 3.0x14: g		*/
+			USID_INHERIT_META,		/* 3.0x15: h		*/
+			USID_INHERIT_META,		/* 3.0x16: n		*/
+			USID_INHERIT_META,		/* 3.0x17: (none)	*/
+			USID_INHERIT_META,		/* 3.0x18: 1		*/
+			USID_INHERIT_META,		/* 3.0x19: ESC		*/
+			USID_INHERIT_META,		/* 3.0x1A: TAB		*/
+			USID_INHERIT_META,		/* 3.0x1B: CTRL		*/
+			USID_INHERIT_META,		/* 3.0x1C: SHIFT L	*/
+			USID_INHERIT_META,		/* 3.0x1D: ALT L	*/
+			USID_INHERIT_META,		/* 3.0x1E: DIA L	*/
+			USID_INHERIT_META,		/* 3.0x1F: SPACE	*/
+			USID_INHERIT_META,		/* 3.0x20: 7		*/
+			USID_INHERIT_META,		/* 3.0x21: 8		*/
+			USID_INHERIT_META,		/* 3.0x22: u		*/
+			USID_INHERIT_META,		/* 3.0x23: i		*/
+			USID_INHERIT_META,		/* 3.0x24: k		*/
+			USID_INHERIT_META,		/* 3.0x25: j		*/
+			USID_INHERIT_META,		/* 3.0x26: m		*/
+			USID_INHERIT_META,		/* 3.0x27: (none)	*/
+			USID_INHERIT_META,		/* 3.0x28: \		*/
+			USID_INHERIT_META,		/* 3.0x29: `		*/
+			USID_INHERIT_META,		/* 3.0x2A: DEL		*/
+			USID_INHERIT_META,		/* 3.0x2B: RETURN	*/
+			USID_INHERIT_META,		/* 3.0x2C: Fn		*/
+			USID_INHERIT_META,		/* 3.0x2D: SHIFT R	*/
+			USID_INHERIT_META,		/* 3.0x2E: ALT R	*/
+			USID_INHERIT_META,		/* 3.0x2F: DIA R	*/
+			USID_INHERIT_META,		/* 3.0x30: 9		*/
+			USID_INHERIT_META,		/* 3.0x31: 0		*/
+			USID_INHERIT_META,		/* 3.0x32: o		*/
+			USID_INHERIT_META,		/* 3.0x33: p		*/
+			USID_INHERIT_META,		/* 3.0x34: ;		*/
+			USID_INHERIT_META,		/* 3.0x35: l		*/
+			USID_INHERIT_META,		/* 3.0x36: ,		*/
+			USID_INHERIT_META,		/* 3.0x37: (none)	*/
+			USID_INHERIT_META,		/* 3.0x38: -		*/
+			USID_INHERIT_META,		/* 3.0x39: =		*/
+			USID_INHERIT_META,		/* 3.0x3A: ]		*/
+			USID_INHERIT_META,		/* 3.0x3B: [		*/
+			USID_INHERIT_META,		/* 3.0x3C: '		*/
+			USID_INHERIT_META,		/* 3.0x3D: /		*/
+			USID_INHERIT_META,		/* 3.0x3E: .		*/
+			USID_NONE				/* 3.0x3F: (none)	*/
+		},
+
+		/* [4] with Nerd Function: KEYMAP_NFUNC */
+		{
+			USID_NONE,				/* 4.0x00: 2		*/
+			USID_NONE,				/* 4.0x01: q		*/
+			USID_NONE,				/* 4.0x02: w		*/
+			USID_NONE,				/* 4.0x03: s		*/
+			USID_NONE,				/* 4.0x04: a		*/
+			USID_NONE,				/* 4.0x05: z		*/
+			USID_NONE,				/* 4.0x06: x		*/
+			USID_NONE,				/* 4.0x07: c		*/
+			USID_NONE,				/* 4.0x08: 3		*/
+			USID_NONE,				/* 4.0x09: 4		*/
+			USID_NONE,				/* 4.0x0A: r		*/
+			USID_NONE,				/* 4.0x0B: e		*/
+			USID_NONE,				/* 4.0x0C: d		*/
+			USID_NONE,				/* 4.0x0D: f		*/
+			USID_NONE,				/* 4.0x0E: v		*/
+			USID_NONE,				/* 4.0x0F: b		*/
+			USID_NONE,				/* 4.0x10: 5		*/
+			USID_NONE,				/* 4.0x11: 6		*/
+			USID_NONE,				/* 4.0x12: y		*/
+			USID_NONE,				/* 4.0x13: t		*/
+			USID_NONE,				/* 4.0x14: g		*/
+			USID_NONE,				/* 4.0x15: h		*/
+			USID_NONE,				/* 4.0x16: n		*/
+			USID_NONE,				/* 4.0x17: (none)	*/
+			USID_NONE,				/* 4.0x18: 1		*/
+			USID_NONE,				/* 4.0x19: ESC		*/
+			USID_NONE,				/* 4.0x1A: TAB		*/
+			USID_NONE,				/* 4.0x1B: CTRL		*/
+			USID_NONE,				/* 4.0x1C: SHIFT L	*/
+			USID_NONE,				/* 4.0x1D: ALT L	*/
+			USID_NONE,				/* 4.0x1E: DIA L	*/
+			USID_NONE,				/* 4.0x1F: SPACE	*/
+			USID_NONE,				/* 4.0x20: 7		*/
+			USID_NONE,				/* 4.0x21: 8		*/
+			USID_NONE,				/* 4.0x22: u		*/
+			USID_NONE,				/* 4.0x23: i		*/
+			USID_NONE,				/* 4.0x24: k		*/
+			USID_NONE,				/* 4.0x25: j		*/
+			USID_NONE,				/* 4.0x26: m		*/
+			USID_NONE,				/* 4.0x27: (none)	*/
+			USID_NONE,				/* 4.0x28: \		*/
+			USID_NONE,				/* 4.0x29: `		*/
+			USID_NONE,				/* 4.0x2A: DEL		*/
+			USID_NONE,				/* 4.0x2B: RETURN	*/
+			USID_NONE,				/* 4.0x2C: Fn		*/
+			USID_NONE,				/* 4.0x2D: SHIFT R	*/
+			USID_NONE,				/* 4.0x2E: ALT R	*/
+			USID_NONE,				/* 4.0x2F: DIA R	*/
+			USID_NONE,				/* 4.0x30: 9		*/
+			USID_NONE,				/* 4.0x31: 0		*/
+			USID_NONE,				/* 4.0x32: o		*/
+			USID_NONE,				/* 4.0x33: p		*/
+			USID_NONE,				/* 4.0x34: ;		*/
+			USID_NONE,				/* 4.0x35: l		*/
+			USID_NONE,				/* 4.0x36: ,		*/
+			USID_NONE,				/* 4.0x37: (none)	*/
+			USID_NONE,				/* 4.0x38: -		*/
+			USID_NONE,				/* 4.0x39: =		*/
+			USID_NONE,				/* 4.0x3A: ]		*/
+			USID_NONE,				/* 4.0x3B: [		*/
+			USID_NONE,				/* 4.0x3C: '		*/
+			USID_NONE,				/* 4.0x3D: /		*/
+			USID_NONE,				/* 4.0x3E: .		*/
+			USID_NONE				/* 4.0x3F: (none)	*/
+		},
+
+		/* [5] with Nerd Lock: KEYMAP_NLOCK */
+		{
+			USID_NONE,				/* 5.0x00: 2		*/
+			USID_NONE,				/* 5.0x01: q		*/
+			USID_NONE,				/* 5.0x02: w		*/
+			USID_NONE,				/* 5.0x03: s		*/
+			USID_NONE,				/* 5.0x04: a		*/
+			USID_NONE,				/* 5.0x05: z		*/
+			USID_NONE,				/* 5.0x06: x		*/
+			USID_NONE,				/* 5.0x07: c		*/
+			USID_NONE,				/* 5.0x08: 3		*/
+			USID_NONE,				/* 5.0x09: 4		*/
+			USID_NONE,				/* 5.0x0A: r		*/
+			USID_NONE,				/* 5.0x0B: e		*/
+			USID_NONE,				/* 5.0x0C: d		*/
+			USID_NONE,				/* 5.0x0D: f		*/
+			USID_NONE,				/* 5.0x0E: v		*/
+			USID_NONE,				/* 5.0x0F: b		*/
+			USID_NONE,				/* 5.0x10: 5		*/
+			USID_NONE,				/* 5.0x11: 6		*/
+			USID_NONE,				/* 5.0x12: y		*/
+			USID_NONE,				/* 5.0x13: t		*/
+			USID_NONE,				/* 5.0x14: g		*/
+			USID_NONE,				/* 5.0x15: h		*/
+			USID_NONE,				/* 5.0x16: n		*/
+			USID_NONE,				/* 5.0x17: (none)	*/
+			USID_NONE,				/* 5.0x18: 1		*/
+			USID_NONE,				/* 5.0x19: ESC		*/
+			USID_NONE,				/* 5.0x1A: TAB		*/
+			USID_NONE,				/* 5.0x1B: CTRL		*/
+			USID_NONE,				/* 5.0x1C: SHIFT L	*/
+			USID_NONE,				/* 5.0x1D: ALT L	*/
+			USID_NONE,				/* 5.0x1E: DIA L	*/
+			USID_NONE,				/* 5.0x1F: SPACE	*/
+			USID_NONE,				/* 5.0x20: 7		*/
+			USID_NONE,				/* 5.0x21: 8		*/
+			USID_NONE,				/* 5.0x22: u		*/
+			USID_NONE,				/* 5.0x23: i		*/
+			USID_NONE,				/* 5.0x24: k		*/
+			USID_NONE,				/* 5.0x25: j		*/
+			USID_NONE,				/* 5.0x26: m		*/
+			USID_NONE,				/* 5.0x27: (none)	*/
+			USID_NONE,				/* 5.0x28: \		*/
+			USID_NONE,				/* 5.0x29: `		*/
+			USID_NONE,				/* 5.0x2A: DEL		*/
+			USID_NONE,				/* 5.0x2B: RETURN	*/
+			USID_NONE,				/* 5.0x2C: Fn		*/
+			USID_NONE,				/* 5.0x2D: SHIFT R	*/
+			USID_NONE,				/* 5.0x2E: ALT R	*/
+			USID_NONE,				/* 5.0x2F: DIA R	*/
+			USID_NONE,				/* 5.0x30: 9		*/
+			USID_NONE,				/* 5.0x31: 0		*/
+			USID_NONE,				/* 5.0x32: o		*/
+			USID_NONE,				/* 5.0x33: p		*/
+			USID_NONE,				/* 5.0x34: ;		*/
+			USID_NONE,				/* 5.0x35: l		*/
+			USID_NONE,				/* 5.0x36: ,		*/
+			USID_NONE,				/* 5.0x37: (none)	*/
+			USID_NONE,				/* 5.0x38: -		*/
+			USID_NONE,				/* 5.0x39: =		*/
+			USID_NONE,				/* 5.0x3A: ]		*/
+			USID_NONE,				/* 5.0x3B: [		*/
+			USID_NONE,				/* 5.0x3C: '		*/
+			USID_NONE,				/* 5.0x3D: /		*/
+			USID_NONE,				/* 5.0x3E: .		*/
+			USID_NONE				/* 5.0x3F: (none)	*/
+		}
+	},
+
+	/* ---------------------------------------------- keymap-set #1 ------- */
+	{
+		/* [0] plain value (without Nerd X): KEYMAP_PLAIN */
+		{
+			USID_KBD_2,				/* 0.0x00: 2		*/
+			USID_KBD_Q,				/* 0.0x01: q		*/
+			USID_KBD_W,				/* 0.0x02: w		*/
+			USID_KBD_S,				/* 0.0x03: s		*/
+			USID_KBD_A,				/* 0.0x04: a		*/
+			USID_KBD_Z,				/* 0.0x05: z		*/
+			USID_KBD_X,				/* 0.0x06: x		*/
+			USID_KBD_C,				/* 0.0x07: c		*/
+			USID_KBD_3,				/* 0.0x08: 3		*/
+			USID_KBD_4,				/* 0.0x09: 4		*/
+			USID_KBD_R,				/* 0.0x0A: r		*/
+			USID_KBD_E,				/* 0.0x0B: e		*/
+			USID_KBD_D,				/* 0.0x0C: d		*/
+			USID_KBD_F,				/* 0.0x0D: f		*/
+			USID_KBD_V,				/* 0.0x0E: v		*/
+			USID_KBD_B,				/* 0.0x0F: b		*/
+			USID_KBD_5,				/* 0.0x10: 5		*/
+			USID_KBD_6,				/* 0.0x11: 6		*/
+			USID_KBD_Y,				/* 0.0x12: y		*/
+			USID_KBD_T,				/* 0.0x13: t		*/
+			USID_KBD_G,				/* 0.0x14: g		*/
+			USID_KBD_H,				/* 0.0x15: h		*/
+			USID_KBD_N,				/* 0.0x16: n		*/
+			USID_NONE,				/* 0.0x17: (none)	*/
+			USID_KBD_1,				/* 0.0x18: 1		*/
+			USID_KBD_ESC,			/* 0.0x19: ESC		*/
+			USID_KBD_TAB,			/* 0.0x1A: TAB		*/
+			USID_KBD_SPACE,			/* 0.0x1B: CTRL		*/
+			USID_MOD_SHIFT_L,		/* 0.0x1C: SHIFT L	*/
+			USID_MOD_ALT_L,			/* 0.0x1D: ALT L	*/
+			USID_NERD_META,			/* 0.0x1E: DIA L	*/
+			USID_NERD_CTRL,			/* 0.0x1F: SPACE	*/
+			USID_KBD_7,				/* 0.0x20: 7		*/
+			USID_KBD_8,				/* 0.0x21: 8		*/
+			USID_KBD_U,				/* 0.0x22: u		*/
+			USID_KBD_I,				/* 0.0x23: i		*/
+			USID_KBD_K,				/* 0.0x24: k		*/
+			USID_KBD_J,				/* 0.0x25: j		*/
+			USID_KBD_M,				/* 0.0x26: m		*/
+			USID_NONE,				/* 0.0x27: (none)	*/
+			USID_KBD_BACK_SLASH,	/* 0.0x28: \		*/
+			USID_KBD_GRAVE_ACCENT,	/* 0.0x29: `		*/
+			USID_KBD_BACKSPACE,		/* 0.0x2A: DEL		*/
+			USID_KBD_RETURN,		/* 0.0x2B: RETURN	*/
+			USID_NERD_LOCK,			/* 0.0x2C: Fn		*/
+			USID_MOD_SHIFT_R,		/* 0.0x2D: SHIFT R	*/
+			USID_NERD_FUNC,			/* 0.0x2E: ALT R	*/
+			USID_KBD_GRAVE_ACCENT,	/* 0.0x2F: DIA R	*/
+			USID_KBD_9,				/* 0.0x30: 9		*/
+			USID_KBD_0,				/* 0.0x31: 0		*/
+			USID_KBD_O,				/* 0.0x32: o		*/
+			USID_KBD_P,				/* 0.0x33: p		*/
+			USID_KBD_SEMI_COLON,	/* 0.0x34: ;		*/
+			USID_KBD_L,				/* 0.0x35: l		*/
+			USID_KBD_COMMA,			/* 0.0x36: ,		*/
+			USID_NONE,				/* 0.0x37: (none)	*/
+			USID_KBD_HYPHONE,		/* 0.0x38: -		*/
+			USID_KBD_EQUAL,			/* 0.0x39: =		*/
+			USID_KBD_BRACKET_END,	/* 0.0x3A: ]		*/
+			USID_KBD_BRACKET_START,	/* 0.0x3B: [		*/
+			USID_KBD_QUOTE,			/* 0.0x3C: '		*/
+			USID_KBD_SLASH,			/* 0.0x3D: /		*/
+			USID_KBD_DOT,			/* 0.0x3E: .		*/
+			USID_NONE				/* 0.0x3F: (none)	*/
+		},
+
+		/* [1] with Nerd Control: KEYMAP_NCTRL */
+		{
+			USID_INHERIT_PLAIN,		/* 1.0x00: 2		*/
+			USID_INHERIT_PLAIN,		/* 1.0x01: q		*/
+			USID_INHERIT_PLAIN,		/* 1.0x02: w		*/
+			USID_INHERIT_PLAIN,		/* 1.0x03: s		*/
+			USID_KBD_HOME,			/* 1.0x04: a		*/
+			USID_INHERIT_PLAIN,		/* 1.0x05: z		*/
+			USID_INHERIT_PLAIN,		/* 1.0x06: x		*/
+			USID_INHERIT_PLAIN,		/* 1.0x07: c		*/
+			USID_INHERIT_PLAIN,		/* 1.0x08: 3		*/
+			USID_INHERIT_PLAIN,		/* 1.0x09: 4		*/
+			USID_INHERIT_PLAIN,		/* 1.0x0A: r		*/
+			USID_KBD_END,			/* 1.0x0B: e		*/
+			USID_KBD_DELETE,		/* 1.0x0C: d		*/
+			USID_KBD_ARROW_R,		/* 1.0x0D: f		*/
+			USID_INHERIT_PLAIN,		/* 1.0x0E: v		*/
+			USID_KBD_ARROW_L,		/* 1.0x0F: b		*/
+			USID_INHERIT_PLAIN,		/* 1.0x10: 5		*/
+			USID_INHERIT_PLAIN,		/* 1.0x11: 6		*/
+			USID_INHERIT_PLAIN,		/* 1.0x12: y		*/
+			USID_INHERIT_PLAIN,		/* 1.0x13: t		*/
+			USID_INHERIT_PLAIN,		/* 1.0x14: g		*/
+			USID_KBD_BACKSPACE,		/* 1.0x15: h		*/
+			USID_KBD_ARROW_D,		/* 1.0x16: n		*/
+			USID_NONE,				/* 1.0x17: (none)	*/
+			USID_INHERIT_PLAIN,		/* 1.0x18: 1		*/
+			USID_INHERIT_PLAIN,		/* 1.0x19: ESC		*/
+			USID_INHERIT_PLAIN,		/* 1.0x1A: TAB		*/
+			USID_INHERIT_PLAIN,		/* 1.0x1B: CTRL		*/
+			USID_INHERIT_PLAIN,		/* 1.0x1C: SHIFT L	*/
+			USID_INHERIT_PLAIN,		/* 1.0x1D: ALT L	*/
+			USID_INHERIT_PLAIN,		/* 1.0x1E: DIA L	*/
+			USID_INHERIT_PLAIN,		/* 1.0x1F: SPACE	*/
+			USID_INHERIT_PLAIN,		/* 1.0x20: 7		*/
+			USID_INHERIT_PLAIN,		/* 1.0x21: 8		*/
+			USID_INHERIT_PLAIN,		/* 1.0x22: u		*/
+			USID_INHERIT_PLAIN,		/* 1.0x23: i		*/
+			USID_INHERIT_PLAIN,		/* 1.0x24: k		*/
+			USID_INHERIT_PLAIN,		/* 1.0x25: j		*/
+			USID_INHERIT_PLAIN,		/* 1.0x26: m		*/
+			USID_NONE,				/* 1.0x27: (none)	*/
+			USID_INHERIT_PLAIN,		/* 1.0x28: \		*/
+			USID_INHERIT_PLAIN,		/* 1.0x29: `		*/
+			USID_KBD_DELETE,		/* 1.0x2A: DEL		*/
+			USID_INHERIT_PLAIN,		/* 1.0x2B: RETURN	*/
+			USID_NONE,				/* 1.0x2C: Fn		*/
+			USID_INHERIT_PLAIN,		/* 1.0x2D: SHIFT R	*/
+			USID_NONE,				/* 1.0x2E: ALT R	*/
+			USID_INHERIT_PLAIN,		/* 1.0x2F: DIA R	*/
+			USID_INHERIT_PLAIN,		/* 1.0x30: 9		*/
+			USID_INHERIT_PLAIN,		/* 1.0x31: 0		*/
+			USID_INHERIT_PLAIN,		/* 1.0x32: o		*/
+			USID_KBD_ARROW_U,		/* 1.0x33: p		*/
+			USID_INHERIT_PLAIN,		/* 1.0x34: ;		*/
+			USID_INHERIT_PLAIN,		/* 1.0x35: l		*/
+			USID_INHERIT_PLAIN,		/* 1.0x36: ,		*/
+			USID_NONE,				/* 1.0x37: (none)	*/
+			USID_INHERIT_PLAIN,		/* 1.0x38: -		*/
+			USID_INHERIT_PLAIN,		/* 1.0x39: =		*/
+			USID_INHERIT_PLAIN,		/* 1.0x3A: ]		*/
+			USID_INHERIT_PLAIN,		/* 1.0x3B: [		*/
+			USID_INHERIT_PLAIN,		/* 1.0x3C: '		*/
+			USID_INHERIT_PLAIN,		/* 1.0x3D: /		*/
+			USID_INHERIT_PLAIN,		/* 1.0x3E: .		*/
+			USID_NONE				/* 1.0x3F: (none)	*/
+		},
+
+		/* [2] with Nerd Meta: KEYMAP_NMETA */
+		{
+			USID_INHERIT_PLAIN,		/* 2.0x00: 2		*/
+			USID_INHERIT_PLAIN,		/* 2.0x01: q		*/
+			USID_INHERIT_PLAIN,		/* 2.0x02: w		*/
+			USID_INHERIT_PLAIN,		/* 2.0x03: s		*/
+			USID_INHERIT_PLAIN,		/* 2.0x04: a		*/
+			USID_INHERIT_PLAIN,		/* 2.0x05: z		*/
+			USID_INHERIT_PLAIN,		/* 2.0x06: x		*/
+			USID_INHERIT_PLAIN,		/* 2.0x07: c		*/
+			USID_INHERIT_PLAIN,		/* 2.0x08: 3		*/
+			USID_INHERIT_PLAIN,		/* 2.0x09: 4		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0A: r		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0B: e		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0C: d		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0D: f		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0E: v		*/
+			USID_INHERIT_PLAIN,		/* 2.0x0F: b		*/
+			USID_INHERIT_PLAIN,		/* 2.0x10: 5		*/
+			USID_INHERIT_PLAIN,		/* 2.0x11: 6		*/
+			USID_INHERIT_PLAIN,		/* 2.0x12: y		*/
+			USID_INHERIT_PLAIN,		/* 2.0x13: t		*/
+			USID_INHERIT_PLAIN,		/* 2.0x14: g		*/
+			USID_INHERIT_PLAIN,		/* 2.0x15: h		*/
+			USID_KBD_PAGE_DOWN,		/* 2.0x16: n		*/
+			USID_NONE,				/* 2.0x17: (none)	*/
+			USID_INHERIT_PLAIN,		/* 2.0x18: 1		*/
+			USID_INHERIT_PLAIN,		/* 2.0x19: ESC		*/
+			USID_INHERIT_PLAIN,		/* 2.0x1A: TAB		*/
+			USID_INHERIT_PLAIN,		/* 2.0x1B: CTRL		*/
+			USID_INHERIT_PLAIN,		/* 2.0x1C: SHIFT L	*/
+			USID_NONE,				/* 2.0x1D: ALT L	*/
+			USID_INHERIT_PLAIN,		/* 2.0x1E: DIA L	*/
+			USID_INHERIT_PLAIN,		/* 2.0x1F: SPACE	*/
+			USID_INHERIT_PLAIN,		/* 2.0x20: 7		*/
+			USID_INHERIT_PLAIN,		/* 2.0x21: 8		*/
+			USID_INHERIT_PLAIN,		/* 2.0x22: u		*/
+			USID_INHERIT_PLAIN,		/* 2.0x23: i		*/
+			USID_INHERIT_PLAIN,		/* 2.0x24: k		*/
+			USID_INHERIT_PLAIN,		/* 2.0x25: j		*/
+			USID_INHERIT_PLAIN,		/* 2.0x26: m		*/
+			USID_NONE,				/* 2.0x27: (none)	*/
+			USID_INHERIT_PLAIN,		/* 2.0x28: \		*/
+			USID_INHERIT_PLAIN,		/* 2.0x29: `		*/
+			USID_INHERIT_PLAIN,		/* 2.0x2A: DEL		*/
+			USID_INHERIT_PLAIN,		/* 2.0x2B: RETURN	*/
+			USID_NONE,				/* 2.0x2C: Fn		*/
+			USID_INHERIT_PLAIN,		/* 2.0x2D: SHIFT R	*/
+			USID_INHERIT_PLAIN,		/* 2.0x2E: ALT R	*/
+			USID_INHERIT_PLAIN,		/* 2.0x2F: DIA R	*/
+			USID_INHERIT_PLAIN,		/* 2.0x30: 9		*/
+			USID_INHERIT_PLAIN,		/* 2.0x31: 0		*/
+			USID_INHERIT_PLAIN,		/* 2.0x32: o		*/
+			USID_KBD_PAGE_UP,		/* 2.0x33: p		*/
+			USID_INHERIT_PLAIN,		/* 2.0x34: ;		*/
+			USID_INHERIT_PLAIN,		/* 2.0x35: l		*/
+			USID_INHERIT_PLAIN,		/* 2.0x36: ,		*/
+			USID_NONE,				/* 2.0x37: (none)	*/
+			USID_INHERIT_PLAIN,		/* 2.0x38: -		*/
+			USID_INHERIT_PLAIN,		/* 2.0x39: =		*/
+			USID_INHERIT_PLAIN,		/* 2.0x3A: ]		*/
+			USID_INHERIT_PLAIN,		/* 2.0x3B: [		*/
+			USID_INHERIT_PLAIN,		/* 2.0x3C: '		*/
+			USID_INHERIT_PLAIN,		/* 2.0x3D: /		*/
+			USID_INHERIT_PLAIN,		/* 2.0x3E: .		*/
+			USID_NONE				/* 2.0x3F: (none)	*/
+		},
+
+		/* [3] with Nerd Control + Nerd Meta: KEYMAP_NCTRL_NMETA */
+		{
+			USID_INHERIT_META,		/* 3.0x00: 2		*/
+			USID_INHERIT_META,		/* 3.0x01: q		*/
+			USID_INHERIT_META,		/* 3.0x02: w		*/
+			USID_INHERIT_META,		/* 3.0x03: s		*/
+			USID_INHERIT_META,		/* 3.0x04: a		*/
+			USID_INHERIT_META,		/* 3.0x05: z		*/
+			USID_INHERIT_META,		/* 3.0x06: x		*/
+			USID_INHERIT_META,		/* 3.0x07: c		*/
+			USID_INHERIT_META,		/* 3.0x08: 3		*/
+			USID_INHERIT_META,		/* 3.0x09: 4		*/
+			USID_INHERIT_META,		/* 3.0x0A: r		*/
+			USID_INHERIT_META,		/* 3.0x0B: e		*/
+			USID_INHERIT_META,		/* 3.0x0C: d		*/
+			USID_INHERIT_META,		/* 3.0x0D: f		*/
+			USID_INHERIT_META,		/* 3.0x0E: v		*/
+			USID_INHERIT_META,		/* 3.0x0F: b		*/
+			USID_INHERIT_META,		/* 3.0x10: 5		*/
+			USID_INHERIT_META,		/* 3.0x11: 6		*/
+			USID_INHERIT_META,		/* 3.0x12: y		*/
+			USID_INHERIT_META,		/* 3.0x13: t		*/
+			USID_INHERIT_META,		/* 3.0x14: g		*/
+			USID_INHERIT_META,		/* 3.0x15: h		*/
+			USID_INHERIT_META,		/* 3.0x16: n		*/
+			USID_INHERIT_META,		/* 3.0x17: (none)	*/
+			USID_INHERIT_META,		/* 3.0x18: 1		*/
+			USID_INHERIT_META,		/* 3.0x19: ESC		*/
+			USID_INHERIT_META,		/* 3.0x1A: TAB		*/
+			USID_INHERIT_META,		/* 3.0x1B: CTRL		*/
+			USID_INHERIT_META,		/* 3.0x1C: SHIFT L	*/
+			USID_INHERIT_META,		/* 3.0x1D: ALT L	*/
+			USID_INHERIT_META,		/* 3.0x1E: DIA L	*/
+			USID_INHERIT_META,		/* 3.0x1F: SPACE	*/
+			USID_INHERIT_META,		/* 3.0x20: 7		*/
+			USID_INHERIT_META,		/* 3.0x21: 8		*/
+			USID_INHERIT_META,		/* 3.0x22: u		*/
+			USID_INHERIT_META,		/* 3.0x23: i		*/
+			USID_INHERIT_META,		/* 3.0x24: k		*/
+			USID_INHERIT_META,		/* 3.0x25: j		*/
+			USID_INHERIT_META,		/* 3.0x26: m		*/
+			USID_INHERIT_META,		/* 3.0x27: (none)	*/
+			USID_INHERIT_META,		/* 3.0x28: \		*/
+			USID_INHERIT_META,		/* 3.0x29: `		*/
+			USID_INHERIT_META,		/* 3.0x2A: DEL		*/
+			USID_INHERIT_META,		/* 3.0x2B: RETURN	*/
+			USID_INHERIT_META,		/* 3.0x2C: Fn		*/
+			USID_INHERIT_META,		/* 3.0x2D: SHIFT R	*/
+			USID_INHERIT_META,		/* 3.0x2E: ALT R	*/
+			USID_INHERIT_META,		/* 3.0x2F: DIA R	*/
+			USID_INHERIT_META,		/* 3.0x30: 9		*/
+			USID_INHERIT_META,		/* 3.0x31: 0		*/
+			USID_INHERIT_META,		/* 3.0x32: o		*/
+			USID_INHERIT_META,		/* 3.0x33: p		*/
+			USID_INHERIT_META,		/* 3.0x34: ;		*/
+			USID_INHERIT_META,		/* 3.0x35: l		*/
+			USID_INHERIT_META,		/* 3.0x36: ,		*/
+			USID_INHERIT_META,		/* 3.0x37: (none)	*/
+			USID_INHERIT_META,		/* 3.0x38: -		*/
+			USID_INHERIT_META,		/* 3.0x39: =		*/
+			USID_INHERIT_META,		/* 3.0x3A: ]		*/
+			USID_INHERIT_META,		/* 3.0x3B: [		*/
+			USID_INHERIT_META,		/* 3.0x3C: '		*/
+			USID_INHERIT_META,		/* 3.0x3D: /		*/
+			USID_INHERIT_META,		/* 3.0x3E: .		*/
+			USID_NONE				/* 3.0x3F: (none)	*/
+		},
+
+		/* [4] with Nerd Function: KEYMAP_NFUNC */
+		{
+			USID_NONE,				/* 4.0x00: 2		*/
+			USID_NONE,				/* 4.0x01: q		*/
+			USID_NONE,				/* 4.0x02: w		*/
+			USID_NONE,				/* 4.0x03: s		*/
+			USID_NONE,				/* 4.0x04: a		*/
+			USID_NONE,				/* 4.0x05: z		*/
+			USID_NONE,				/* 4.0x06: x		*/
+			USID_NONE,				/* 4.0x07: c		*/
+			USID_NONE,				/* 4.0x08: 3		*/
+			USID_NONE,				/* 4.0x09: 4		*/
+			USID_NONE,				/* 4.0x0A: r		*/
+			USID_NONE,				/* 4.0x0B: e		*/
+			USID_NONE,				/* 4.0x0C: d		*/
+			USID_NONE,				/* 4.0x0D: f		*/
+			USID_NONE,				/* 4.0x0E: v		*/
+			USID_NONE,				/* 4.0x0F: b		*/
+			USID_NONE,				/* 4.0x10: 5		*/
+			USID_NONE,				/* 4.0x11: 6		*/
+			USID_NONE,				/* 4.0x12: y		*/
+			USID_NONE,				/* 4.0x13: t		*/
+			USID_NONE,				/* 4.0x14: g		*/
+			USID_NONE,				/* 4.0x15: h		*/
+			USID_NONE,				/* 4.0x16: n		*/
+			USID_NONE,				/* 4.0x17: (none)	*/
+			USID_NONE,				/* 4.0x18: 1		*/
+			USID_NONE,				/* 4.0x19: ESC		*/
+			USID_NONE,				/* 4.0x1A: TAB		*/
+			USID_NONE,				/* 4.0x1B: CTRL		*/
+			USID_NONE,				/* 4.0x1C: SHIFT L	*/
+			USID_NONE,				/* 4.0x1D: ALT L	*/
+			USID_NONE,				/* 4.0x1E: DIA L	*/
+			USID_NONE,				/* 4.0x1F: SPACE	*/
+			USID_NONE,				/* 4.0x20: 7		*/
+			USID_NONE,				/* 4.0x21: 8		*/
+			USID_NONE,				/* 4.0x22: u		*/
+			USID_NONE,				/* 4.0x23: i		*/
+			USID_NONE,				/* 4.0x24: k		*/
+			USID_NONE,				/* 4.0x25: j		*/
+			USID_NONE,				/* 4.0x26: m		*/
+			USID_NONE,				/* 4.0x27: (none)	*/
+			USID_NONE,				/* 4.0x28: \		*/
+			USID_NONE,				/* 4.0x29: `		*/
+			USID_NONE,				/* 4.0x2A: DEL		*/
+			USID_NONE,				/* 4.0x2B: RETURN	*/
+			USID_NONE,				/* 4.0x2C: Fn		*/
+			USID_NONE,				/* 4.0x2D: SHIFT R	*/
+			USID_NONE,				/* 4.0x2E: ALT R	*/
+			USID_NONE,				/* 4.0x2F: DIA R	*/
+			USID_NONE,				/* 4.0x30: 9		*/
+			USID_NONE,				/* 4.0x31: 0		*/
+			USID_NONE,				/* 4.0x32: o		*/
+			USID_NONE,				/* 4.0x33: p		*/
+			USID_NONE,				/* 4.0x34: ;		*/
+			USID_NONE,				/* 4.0x35: l		*/
+			USID_NONE,				/* 4.0x36: ,		*/
+			USID_NONE,				/* 4.0x37: (none)	*/
+			USID_NONE,				/* 4.0x38: -		*/
+			USID_NONE,				/* 4.0x39: =		*/
+			USID_NONE,				/* 4.0x3A: ]		*/
+			USID_NONE,				/* 4.0x3B: [		*/
+			USID_NONE,				/* 4.0x3C: '		*/
+			USID_NONE,				/* 4.0x3D: /		*/
+			USID_NONE,				/* 4.0x3E: .		*/
+			USID_NONE				/* 4.0x3F: (none)	*/
+		},
+
+		/* [5] with Nerd Lock: KEYMAP_NLOCK */
+		{
+			USID_NONE,				/* 5.0x00: 2		*/
+			USID_NONE,				/* 5.0x01: q		*/
+			USID_NONE,				/* 5.0x02: w		*/
+			USID_NONE,				/* 5.0x03: s		*/
+			USID_NONE,				/* 5.0x04: a		*/
+			USID_NONE,				/* 5.0x05: z		*/
+			USID_NONE,				/* 5.0x06: x		*/
+			USID_NONE,				/* 5.0x07: c		*/
+			USID_NONE,				/* 5.0x08: 3		*/
+			USID_NONE,				/* 5.0x09: 4		*/
+			USID_NONE,				/* 5.0x0A: r		*/
+			USID_NONE,				/* 5.0x0B: e		*/
+			USID_NONE,				/* 5.0x0C: d		*/
+			USID_NONE,				/* 5.0x0D: f		*/
+			USID_NONE,				/* 5.0x0E: v		*/
+			USID_NONE,				/* 5.0x0F: b		*/
+			USID_NONE,				/* 5.0x10: 5		*/
+			USID_NONE,				/* 5.0x11: 6		*/
+			USID_NONE,				/* 5.0x12: y		*/
+			USID_NONE,				/* 5.0x13: t		*/
+			USID_NONE,				/* 5.0x14: g		*/
+			USID_NONE,				/* 5.0x15: h		*/
+			USID_NONE,				/* 5.0x16: n		*/
+			USID_NONE,				/* 5.0x17: (none)	*/
+			USID_NONE,				/* 5.0x18: 1		*/
+			USID_NONE,				/* 5.0x19: ESC		*/
+			USID_NONE,				/* 5.0x1A: TAB		*/
+			USID_NONE,				/* 5.0x1B: CTRL		*/
+			USID_NONE,				/* 5.0x1C: SHIFT L	*/
+			USID_NONE,				/* 5.0x1D: ALT L	*/
+			USID_NONE,				/* 5.0x1E: DIA L	*/
+			USID_NONE,				/* 5.0x1F: SPACE	*/
+			USID_NONE,				/* 5.0x20: 7		*/
+			USID_NONE,				/* 5.0x21: 8		*/
+			USID_NONE,				/* 5.0x22: u		*/
+			USID_NONE,				/* 5.0x23: i		*/
+			USID_NONE,				/* 5.0x24: k		*/
+			USID_NONE,				/* 5.0x25: j		*/
+			USID_NONE,				/* 5.0x26: m		*/
+			USID_NONE,				/* 5.0x27: (none)	*/
+			USID_NONE,				/* 5.0x28: \		*/
+			USID_NONE,				/* 5.0x29: `		*/
+			USID_NONE,				/* 5.0x2A: DEL		*/
+			USID_NONE,				/* 5.0x2B: RETURN	*/
+			USID_NONE,				/* 5.0x2C: Fn		*/
+			USID_NONE,				/* 5.0x2D: SHIFT R	*/
+			USID_NONE,				/* 5.0x2E: ALT R	*/
+			USID_NONE,				/* 5.0x2F: DIA R	*/
+			USID_NONE,				/* 5.0x30: 9		*/
+			USID_NONE,				/* 5.0x31: 0		*/
+			USID_NONE,				/* 5.0x32: o		*/
+			USID_NONE,				/* 5.0x33: p		*/
+			USID_NONE,				/* 5.0x34: ;		*/
+			USID_NONE,				/* 5.0x35: l		*/
+			USID_NONE,				/* 5.0x36: ,		*/
+			USID_NONE,				/* 5.0x37: (none)	*/
+			USID_NONE,				/* 5.0x38: -		*/
+			USID_NONE,				/* 5.0x39: =		*/
+			USID_NONE,				/* 5.0x3A: ]		*/
+			USID_NONE,				/* 5.0x3B: [		*/
+			USID_NONE,				/* 5.0x3C: '		*/
+			USID_NONE,				/* 5.0x3D: /		*/
+			USID_NONE,				/* 5.0x3E: .		*/
+			USID_NONE				/* 5.0x3F: (none)	*/
+		}
+	}
+};
+
+/* end of keymap.h */

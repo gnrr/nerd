@@ -1,0 +1,3 @@
+fw.obj, dscr.obj, periph.obj, 
+C:\Anchor\EzUsb\Target\lib\USBJmpTb.obj,C:\Anchor\EzUsb\Target\lib\EZUSB.lib  
+TO hid RAMSIZE(256) PL(68) PW(78) CODE(4000h) XDATA(5000h)  
