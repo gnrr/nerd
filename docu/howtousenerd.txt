@@ -1,0 +1,16 @@
+デスクトップにあるmsys.batを起動するとmsysの~に入る。
+（~はC:\MinGW\msys\1.0\home\Administrator）
+
+ここにnerd/hhk_nerd/firmwareフォルダをコピーしてあるので、ここに入ってmakeするようにする。
+（msysではsymlinkが使えないので、Mac<-->msysでフォルダをコピーするしかないorz）
+
+make すると nerd.hexができる。
+これをEZ-USB Control Panel のDownloadボタンを押して、HHK nerdのRAMにダウンロードする。（事前に HHK nerdのスライドSWをRAM側にしておかないと認識しないので注意）
+
+ちなみに EZ-USB Control Panelは下記にある。
+スタートメニュー > Cypress > USB > EZ-USB Control Panel 
+
+RAMで動作を確認してOKなら、make iicで書き込み用のnerd.iicファイルを作成する。
+
+
+
